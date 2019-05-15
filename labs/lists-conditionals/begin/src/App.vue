@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>Data Binding</h1>
+    <h1>Lists and Conditionals</h1>
     <Heroes/>
   </div>
 </template>
