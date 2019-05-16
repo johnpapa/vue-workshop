@@ -5,7 +5,7 @@
       <li
         v-for="hero in heroes"
         :key="hero.id"
-        @click="selectedHero=hero"
+        @click="selectHero(hero)"
         :class="{highlight: selectedHero===hero}"
       >{{ hero.name }}</li>
     </ul>
@@ -27,7 +27,11 @@ export default {
       ]
     };
   },
-  methods: {}
+methods: {
+  selectHero(hero) {
+    this.selectedHero = hero;
+  }
+}
 };
 </script>
 
