@@ -36,7 +36,7 @@ Topics covered include:
 
 
 
-## Lab 1: Your First Vue App
+## Lab 1: 1 - Your First Vue App
 
 This lab will walk you through creating your first Vue app.
 
@@ -191,7 +191,7 @@ Your name should be displayed in your app. Type a new value and your should see 
 
 
 
-## Lab 2: Hello World! - The Vue CLI
+## Lab 2: 2 - Hello World! - The Vue CLI
 
 This lab will walk you through getting the required tools and creating your first app with the Vue CLI
 
@@ -308,7 +308,7 @@ Browse to [http://localhost:8080](http://localhost:8080) to see your app running
 
 
 
-## Lab 3: Display Data and Handling Events
+## Lab 3: 3 - Display Data and Handling Events
 
 This lab will walk you through creating a Heroes component and display data, changing data, and handling user input events.
 
@@ -465,7 +465,7 @@ When the user presses the ENTER key inside of your input element, your hero's na
 ```
 
 
-## Lab 4: Lists and Conditionals
+## Lab 4: 4 - Lists and Conditionals
 
 This lab will walk you through adding a list of heroes and showing/hiding content as appropriate.
 
@@ -663,28 +663,28 @@ Your template should now contain a div that looks like this:
 ```
 
 
-## Lab 5: Interacting within a Component
+## Lab 5: 5 - Interacting within a Component
 
 This lab will walk you through ... methods, watchers, computeds, filters, data
 
 
 
 
-## Lab 6: Component Communication
+## Lab 6: 6 - Component Communication
 
 This lab will walk you through ... props
 
 
 
 
-## Lab 7: Accessing Data
+## Lab 7: 7 - Accessing Data
 
 This lab will walk you through ... axios and http
 
 
 
 
-## Lab 8: Routing
+## Lab 8: 8 - Routing
 
 This lab will walk you through ... routing
 
@@ -906,7 +906,7 @@ Stop the server by pressing `ctrl+c`. This lab is complete.
 
 
 
-## Lab 9: Managing State
+## Lab 9: 9 - Managing State
 
 This lab will walk you through ... vuex
 
