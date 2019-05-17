@@ -1,8 +1,6 @@
 <template>
   <div id="app">
     <h1>Villains and Orders App</h1>
-
-    <!-- Add router-view here -->
   </div>
 </template>
 
