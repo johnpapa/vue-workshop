@@ -611,53 +611,101 @@ When you are prompted to use history mode, type `y` and press `ENTER`.
 
 #### Step 3
 
-Open `src/components` and take a quick look at the following component files:
+Notice that the Vue CLi tells you that several files have been updated. The `router.js` file now contains all of your routing/navigation logic and tells Vue to use the router. The `App.vue` file now contains a place for the routes to show their views (the `<router-view>`).
 
-- villains-list.vue
-- orders-list.vue
+```command-line
+The following files have been updated / added:
 
-They'll be displayed in the application using routing.
+  src/router.js
+  src/views/About.vue
+  src/views/Home.vue
+  package-lock.json
+  package.json
+  src/App.vue
+  src/main.js
+```
 
 #### Step 4
 
-Open `main.js`. Notice that `vue-router` along with several components are imported at the top of the file.
+We also have new files `Home.vue` and `About.vue`. Let's delete those because we'll be adding our own views.
+
+We'll be using the following files instead:
+
+- villains-list.vue
+- orders-list.vue
+- not-found.vue
+
+They'll be displayed in the application using routing.
+
+#### Step 5
+
+Open `router.js`. Notice that `vue-router` along with the `About` and `Home` views are imported at the top of the file. We removed the About and Home views, so let's remove their imports too.
 
 #### Step 6
 
-Locate the `Add VueRouter Here` comment in `main.js` and add the following code after it to create `villains` and `orders` routes, and register `VueRouter` with `Vue`.
+Open `router.js` and and import the `villains-list.vue` at the top of the file.
 
 ```javascript
-const router = new VueRouter({
-  mode: 'history',
-  routes: [
-    { path: '/', redirect: '/villains' },
-    { path: '/villains', name: 'villains', component: VillainsList
-    { path: '/orders/:id', name: 'orders', component: OrdersList },
-    { path: '*', component: NotFound }
-  ]
-});
+import Vue from 'vue';
+import Router from 'vue-router';
+import VillainsList from './views/villains-list.vue';
 
-Vue.use(VueRouter);
+Vue.use(Router);
 ```
 
 #### Step 7
 
-Add the `router` object into the new `Vue` object as shown next:
+Go to the `router.js` file and look for the route definitions. Change the default path of `/` from home to villains. This `villainst-list.vue` will load using eager loading because we specify the component explicitly.
 
 ```javascript
-new Vue({
-  router,
-  render: h => h(App)
-}).$mount('#app');
+routes: [
+  {
+    path: '/',
+    name: 'villains',
+    component: VillainsList
+  },
 ```
 
 #### Step 8
 
-Open `App.vue` and add the following component into it after the `h1` element to create a placeholder for routed components.
+Go to the `router.js` file and look for the route definitions. Change the `/about` path from about to orders. Use the lazy loading syntax for orders.
+
+```javascript
+{
+  path: '/orders',
+  name: 'orders',
+  component: () => import(/* webpackChunkName: "orders" */ './views/orders-list.vue')
+}
+```
+
+#### Step 9
+
+Go to the `router.js` file and look for the route definitions. Add a path at the end of the route definitions to catch all unknown routes, and send it to the not-found view. You will also want to import the `not-found.vue` file at the top of this file.
+
+```javascript
+import NotFound from './views/not-found.vue';
+
+///
+
+{ path: '*', component: NotFound }
+```
+
+#### Step 10
+
+Open `App.vue` and notice we have a `router-link` pointing to `/` for Home and `/about` for About. Update the Home route to point to say Villains.
 
 ```html
+<div id="nav">
+  <router-link to="/">Villains</router-link>
+  |
+  <router-link to="/about">About</router-link>
+</div>
 <router-view />
 ```
+
+#### Step 11
+
+Run `npm run serve` and explore the routing navigation you just successfully created!
 
 ### Exercise 2: Router Links and Parameters
 
