@@ -4,7 +4,7 @@
     <!-- <VillainsList :villains="evilPeople" />
     <br />
     <OrdersList />-->
-    <router-view/>
+    <!-- <router-view/> -->
   </div>
 </template>
 
