@@ -15,37 +15,32 @@
         <td>{{ '$' + total(order.price, order.quantity) }}</td>
       </tr>
     </table>
-    <br />
+    <br>
     <!-- Add router-link Here -->
-
-
   </div>
 </template>
 
 <script>
 export default {
-  name: 'OrdersList',
+  name: "OrdersList",
   methods: {
     total: (price, quantity) => {
       return price * quantity.toFixed(2);
     }
   },
-  computed: {
-
-  },
+  computed: {},
   data: function() {
     return {
       orders: [
-        { id: 1, product: 'Blow torch', price: 399.99, quantity: 1 },
-        { id: 2, product: 'Hammer ', price: 59.99, quantity: 4 },
-        { id: 3, product: 'TV', price: 899.99, quantity: 2 },
-        { id: 4, product: 'Surfboard', price: 679.00, quantity: 1 },
+        { id: 1, product: "Blow torch", price: 399.99, quantity: 1 },
+        { id: 2, product: "Hammer ", price: 59.99, quantity: 4 },
+        { id: 3, product: "TV", price: 899.99, quantity: 2 },
+        { id: 4, product: "Surfboard", price: 679.0, quantity: 1 }
       ]
     };
   }
-}
+};
 </script>
 
 <style scoped>
-
 </style>

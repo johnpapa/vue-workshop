@@ -3,17 +3,19 @@
     <h1>Villains and Orders App</h1>
     <!-- <VillainsList :villains="evilPeople" />
     <br />
-    <OrdersList /> -->
-    <router-view />
+    <OrdersList />-->
+    <router-view/>
   </div>
 </template>
 
 <script>
-import VillainsList from '@/components/VillainsList.vue';
-import OrdersList from '@/components/OrdersList.vue';
+import "@/assets/global.css";
+
+import VillainsList from "@/components/villains-list.vue";
+import OrdersList from "@/components/orders-list.vue";
 
 export default {
-  name: 'app',
+  name: "app"
   // components: {
   //   VillainsList,
   //   OrdersList
@@ -28,12 +30,12 @@ export default {
   //     ]
   //   };
   // }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;

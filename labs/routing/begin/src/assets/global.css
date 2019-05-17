@@ -1,21 +1,21 @@
 table {
-    width: 100%;
+  width: 100%;
 }
 
 tr:nth-child(1) {
-    background-color: #000;
-    color: #fff;
+  background-color: #000;
+  color: #fff;
 }
 
-th { 
-    text-align: left;
+th {
+  text-align: left;
 }
 
 tr:hover {
-    background-color: #ccc;
-    cursor: pointer;
+  background-color: #ccc;
+  cursor: pointer;
 }
 
 tr:nth-child(even) {
-    background-color: #efefef;
+  background-color: #efefef;
 }

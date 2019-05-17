@@ -2,13 +2,11 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import App from '@/App.vue';
-import VillainsList from '@/components/VillainsList';
-import OrdersList from '@/components/OrdersList';
-import NotFound from '@/components/NotFound';
+import VillainsList from '@/components/villains-list';
+import OrdersList from '@/components/orders-list';
+import NotFound from '@/components/not-found';
 
 Vue.config.productionTip = false;
-
-import "@/assets/global.css";
 
 const router = new VueRouter({
   mode: 'history',

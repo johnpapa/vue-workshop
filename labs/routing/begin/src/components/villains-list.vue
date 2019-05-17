@@ -12,7 +12,6 @@
         <td>{{ v.description }}</td>
         <td>
           <!-- Add router-link Here -->
-          
         </td>
       </tr>
     </table>
@@ -21,23 +20,22 @@
 
 <script>
 export default {
-  name: 'VillainsList',
+  name: "VillainsList",
   props: {
     villains: {
       type: Array,
       default: () => {
         return [
-          { id: 1, name: 'Cape Killer', description: 'Hater of capes' },
-          { id: 2, name: 'Wave Curler', description: 'Controls water' },
-          { id: 3, name: 'Ted', description: 'Just a bad guy' },
-          { id: 4, name: 'Kelp Crusher', description: 'Destroys the sea' },
+          { id: 1, name: "Cape Killer", description: "Hater of capes" },
+          { id: 2, name: "Wave Curler", description: "Controls water" },
+          { id: 3, name: "Ted", description: "Just a bad guy" },
+          { id: 4, name: "Kelp Crusher", description: "Destroys the sea" }
         ];
       }
-    } 
+    }
   }
-}
+};
 </script>
 
 <style scoped>
-
 </style>
