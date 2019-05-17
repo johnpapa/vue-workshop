@@ -273,7 +273,11 @@ npm run serve
 
 #### Step 3
 
-Browse to [http://localhost:8080](http://localhost:8080) to see your app running in the browser
+Browse to [http://localhost:8080](http://localhost:8080) to see your app running in the browser.
+
+#### Step 4
+
+When you are done, stop the server by pressing `ctrl+c`. This lab is complete.
 
 ## Lab 3: Display Data and Handling Events
 
@@ -408,6 +412,22 @@ When the user presses the ENTER key inside of your input element, your hero's na
 ```html
 <input v-model="hero.name" type="text" @keyup.enter="upperCaseTheName()" />
 ```
+
+#### Step 5
+
+Run the following command to serve your app
+
+```command line
+npm run serve
+```
+
+#### Step 6
+
+Browse to [http://localhost:8080](http://localhost:8080) to see your app running in the browser.
+
+#### Step 7
+
+When you are done, stop the server by pressing `ctrl+c`. This lab is complete.
 
 ## Lab 4: Lists and Conditionals
 
@@ -571,13 +591,17 @@ Only display the div you just created if a hero has been selected. Use the `v-if
 
 #### Step 6
 
-Run the example with `npm run serve` and open it in your browser. You should see no message until you selet a hero. Then you should see your message and the hero's name.
+Run the example with `npm run serve` and open it in your browser. You should see no message until you select a hero. Then you should see your message and the hero's name.
 
 Your template should now contain a div that looks like this:
 
 ```html
 <div v-if="selectedHero">You selected {{ selectedHero.name }}</div>
 ```
+
+#### Step 7
+
+When you are done, stop the server by pressing `ctrl+c`. This lab is complete.
 
 ## Lab 5: Interacting within a Component
 
@@ -719,7 +743,7 @@ Open `App.vue` and notice we have a `router-link` pointing to `/` for Home and `
 
 #### Step 12
 
-Run `npm run serve` and explore the routing navigation you just successfully created!
+Run `npm run serve` and visit `http://localhost:8080` in the browser. Now explore the routing navigation you just successfully created!
 
 ### Exercise 2: Router Links and Parameters
 
@@ -727,9 +751,9 @@ In this exercise you'll use the `router-link` component to create a link to a ro
 
 #### Step 1
 
-Open `villains-list.vue`
+Open `villains-list.vue`. Locate the `Add router-link Here` comment and replace it with the following code to link to the `orders-list.vue` and pass it the order ID.
 
-```javascript
+```html
 <router-link :to="{ name: 'orders', params: { id: v.id }}">
   View Orders
 </router-link>
@@ -745,7 +769,7 @@ Open `orders-list.vue`. Notice that the top of the template writes out the value
 
 #### Step 3
 
-Locate the `Add router-link Here` comment in the `orders-list.vue` template. Add the following code after the comment to link back to the `villains-list.vue`
+Locate the `Add router-link Here` comment in the `orders-list.vue` template. Replace the comment with the following code to link back to the `villains-list.vue`.
 
 ```javascript
 <router-link :to="{ name: 'villains' }">View Villains</router-link>
@@ -758,7 +782,7 @@ Add a new computed property named `villainId` into the component's script sectio
 The computed property function should accept a single parameter named `vm` and return a value of `vm.$route.params.id`. Click on the `Hint` below if you need help.
 
 <course-item type="Note" title="Using $route">
-The $route object can be used to access route parameters (such as the `:id` parameter defined in the previous exercise) or even access querystring parameters.
+The $route object can be used to access route parameters (such as the `:id` parameter defined in the previous exercise) or even access query-string parameters.
 </course-item>
 
 <course-item type="Hint" title="Need Help?">
