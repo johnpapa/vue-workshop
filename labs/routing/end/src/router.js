@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import VillainsList from './views/villains-list.vue';
+import HeroesList from './views/heroes-list.vue';
 import NotFound from './views/not-found.vue';
 
 Vue.use(Router);
@@ -13,6 +14,11 @@ export default new Router({
       path: '/',
       name: 'villains',
       component: VillainsList
+    },
+    {
+      path: '/heroes',
+      name: 'HeroesList',
+      component: HeroesList
     },
     {
       path: '/orders',

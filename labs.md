@@ -643,19 +643,20 @@ Open `router.js`. Notice that `vue-router` along with the `About` and `Home` vie
 
 #### Step 6
 
-Open `router.js` and and import the `villains-list.vue` at the top of the file.
+Open `router.js` and and import `villains-list.vue` and the `heroes-list.vue` at the top of the file.
 
 ```javascript
 import Vue from 'vue';
 import Router from 'vue-router';
 import VillainsList from './views/villains-list.vue';
+import HeroesList from './views/heroes-list.vue';
 
 Vue.use(Router);
 ```
 
 #### Step 7
 
-Go to the `router.js` file and look for the route definitions. Change the default path of `/` from home to villains. This `villainst-list.vue` will load using eager loading because we specify the component explicitly.
+Go to the `router.js` file and look for the route definitions. Change the default path of `/` from home to villains. This `villains-list.vue` will load using eager loading because we specify the component explicitly.
 
 ```javascript
 routes: [
@@ -668,6 +669,19 @@ routes: [
 
 #### Step 8
 
+In `router.js`, look for the route definitions. Add a route definition such that `/heroes` displays the `heroes-list.vue`.
+
+```javascript
+routes: [
+  {
+    path: '/heroes',
+    name: 'heroes',
+    component: HeroesList
+  },
+```
+
+#### Step 9
+
 Go to the `router.js` file and look for the route definitions. Change the `/about` path from about to orders. Use the lazy loading syntax for orders.
 
 ```javascript
@@ -678,7 +692,7 @@ Go to the `router.js` file and look for the route definitions. Change the `/abou
 }
 ```
 
-#### Step 9
+#### Step 10
 
 Go to the `router.js` file and look for the route definitions. Add a path at the end of the route definitions to catch all unknown routes, and send it to the not-found view. You will also want to import the `not-found.vue` file at the top of this file.
 
@@ -690,7 +704,7 @@ import NotFound from './views/not-found.vue';
 { path: '*', component: NotFound }
 ```
 
-#### Step 10
+#### Step 11
 
 Open `App.vue` and notice we have a `router-link` pointing to `/` for Home and `/about` for About. Update the Home route to point to say Villains.
 
@@ -703,7 +717,7 @@ Open `App.vue` and notice we have a `router-link` pointing to `/` for Home and `
 <router-view />
 ```
 
-#### Step 11
+#### Step 12
 
 Run `npm run serve` and explore the routing navigation you just successfully created!
 
