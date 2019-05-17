@@ -605,13 +605,11 @@ Open `labs/routing/begin` in your editor.
 
 #### Step 2
 
-Open `package.json` and note that `vue-router` is included in the list of dependencies.
+Open a terminal window in the root of the project and run `vue add router`. This adds the Vue router to your dependencies and includes it n your app.
+
+When you are prompted to use history mode, type `y` and press `ENTER`.
 
 #### Step 3
-
-Open a terminal window in the root of the project and run `npm install`.
-
-#### Step 4
 
 Open `src/components` and take a quick look at the following component files:
 
@@ -620,7 +618,7 @@ Open `src/components` and take a quick look at the following component files:
 
 They'll be displayed in the application using routing.
 
-#### Step 5
+#### Step 4
 
 Open `main.js`. Notice that `vue-router` along with several components are imported at the top of the file.
 
