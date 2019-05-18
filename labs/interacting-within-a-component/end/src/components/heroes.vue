@@ -8,16 +8,20 @@
             <li
               v-for="hero in heroes"
               :key="hero.id"
-              @click="selectHero(hero)"
-              :class="{highlight: selectedHero===hero}"
             >
               <div class="card">
                 <div class="card-content">
                   <div class="content">
                     <div :key="hero.name" class="name">{{ hero.name }}</div>
-                    <div class="description">{{ hero.description }}</div>
+                    <div>{{ hero.description }}</div>
                   </div>
                 </div>
+                <footer class="card-footer">
+                  <button class="link card-footer-item save-button" @click="selectHero(hero)">
+                    <i class="fas fa-check"></i>
+                    <span>Select</span>
+                  </button>
+                </footer>
               </div>
             </li>
           </ul>
@@ -30,14 +34,12 @@
                 <div class="content">
                   <div class="field">
                     <label class="label" for="id">id</label>
-                    <input
-                      class="input"
-                      name="id"
-                      placeholder="e.g. 777"
-                      readonly
-                      type="text"
-                      v-model="selectedHero.id"
-                    >
+                    <label class="input" name="id" readonly>{{selectedHero.id}}</label>
+                  </div>
+                  {{selectedHero.fullAddress}}
+                  <div class="field">
+                    <label class="label" for="fullAddress">Full Address</label>
+                    <label class="input" name="fullAddress" readonly>{{fullAddress}}</label>
                   </div>
                   <div class="field">
                     <label class="label" for="name">name</label>
@@ -59,18 +61,45 @@
                       v-model="selectedHero.description"
                     >
                   </div>
+                  <div class="field">
+                    <label class="label" for="address">address</label>
+                    <input
+                      class="input"
+                      name="address"
+                      type="text"
+                      v-model="selectedHero.address"
+                    >
+                  </div>
+                  <div class="field">
+                    <label class="label" for="city">city</label>
+                    <input
+                      class="input"
+                      name="city"
+                      type="text"
+                      v-model="selectedHero.city"
+                    >
+                  </div>
+                  <div class="field">
+                    <label class="label" for="state">state</label>
+                    <input
+                      class="input"
+                      name="state"
+                      type="text"
+                      v-model="selectedHero.state"
+                    >
+                  </div>
                 </div>
-                <footer class="card-footer">
-                  <button class="link card-footer-item cancel-button" @click="cancelHero()">
-                    <i class="fas fa-undo"></i>
-                    <span>Cancel</span>
-                  </button>
-                  <button class="link card-footer-item save-button" @click="saveHero()">
-                    <i class="fas fa-save"></i>
-                    <span>Save</span>
-                  </button>
-                </footer>
               </div>
+              <footer class="card-footer">
+                <button class="link card-footer-item cancel-button" @click="cancelHero()">
+                  <i class="fas fa-undo"></i>
+                  <span>Cancel</span>
+                </button>
+                <button class="link card-footer-item save-button" @click="saveHero()">
+                  <i class="fas fa-save"></i>
+                  <span>Save</span>
+                </button>
+              </footer>
             </div>
           </div>
         </div>
@@ -86,11 +115,41 @@ export default {
     return {
       selectedHero: undefined,
       heroes: [
-        { id: 10, name: "Ella", description: "fashionista" },
-        { id: 20, name: "Madelyn", description: "the cat whisperer" },
-        { id: 30, name: "Haley", description: "pen wielder" }
+        {
+          id: 10,
+          name: "Ella",
+          address: "1 Lois Lane",
+          city: "Orlando",
+          state: "FL",
+          description: "fashionista"
+        },
+        {
+          id: 20,
+          name: "Madelyn",
+          address: "1 Somewhere Street",
+          city: "Tampa",
+          state: "FL",
+          description: "the cat whisperer"
+        },
+        {
+          id: 30,
+          name: "Haley",
+          address: "1 Nowhere Trail ",
+          city: "Miami",
+          state: "FL",
+          description: "pen wielder"
+        }
       ]
     };
+  },
+  computed: {
+    fullAddress() {
+      return this.selectedHero
+        ? `${this.selectedHero.address}, ${this.selectedHero.city} ${
+            this.selectedHero.state
+          }`
+        : "";
+    }
   },
   methods: {
     selectHero(hero) {
