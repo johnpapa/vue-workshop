@@ -27,11 +27,11 @@ export default {
       ]
     };
   },
-methods: {
-  selectHero(hero) {
-    this.selectedHero = hero;
+  methods: {
+    selectHero(hero) {
+      this.selectedHero = hero;
+    }
   }
-}
 };
 </script>
 
