@@ -6,7 +6,7 @@
         <div class="column is-8">
           <div class="card edit-detail" v-if="hero && hero.id">
             <header class="card-header">
-              <p class="card-header-title">{{ fullName }}</p>
+              <p class="card-header-title">TITLE</p>
             </header>
             <div class="card-content">
               <div class="content">
@@ -64,37 +64,9 @@ export default {
       message: ""
     };
   },
-  created() {
-    this.loadHero();
-  },
-  computed: {
-    fullName() {
-      return `${this.hero.firstName} ${this.hero.lastName}`;
-    }
-  },
-  watch: {
-    "hero.capeCounter": {
-      immediate: true,
-      handler(newValue, oldValue) {
-        console.log("Watcher evaluated!");
-        const value = parseInt(newValue, 10);
-        switch (value) {
-          case 0:
-            this.capeMessage = "Where is my cape?";
-            break;
-          case 1:
-            this.capeMessage = "One is all I need";
-            break;
-          case 2:
-            this.capeMessage = "Alway have a spare";
-            break;
-          default:
-            this.capeMessage = "You can never have enough capes";
-            break;
-        }
-      }
-    }
-  },
+  // created() {},
+  // computed: {},
+  // watch: {},
   methods: {
     cancelHero() {
       this.loadHero();
@@ -104,6 +76,23 @@ export default {
       this.message = "getting the hero, please be patient";
       this.hero = await this.getHero();
       this.message = "";
+    },
+    handleTheCapes(newValue) {
+      const value = parseInt(newValue, 10);
+      switch (value) {
+        case 0:
+          this.capeMessage = "Where is my cape?";
+          break;
+        case 1:
+          this.capeMessage = "One is all I need";
+          break;
+        case 2:
+          this.capeMessage = "Alway have a spare";
+          break;
+        default:
+          this.capeMessage = "You can never have enough capes";
+          break;
+      }
     },
     saveHero() {
       alert("Save!");
