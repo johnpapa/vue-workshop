@@ -10,7 +10,7 @@
                 <div class="card-content">
                   <div class="content">
                     <div :key="hero.name" class="name">{{ hero.firstName }} {{ hero.lastName }}</div>
-                    <div>{{ hero.description }}</div>
+                    <div class="description">{{ hero.description }}</div>
                   </div>
                 </div>
                 <footer class="card-footer">
