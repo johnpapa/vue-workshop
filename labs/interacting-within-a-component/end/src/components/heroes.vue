@@ -3,8 +3,8 @@
     <div class="section content-title-group">
       <h2 class="title">Hero</h2>
       <div class="columns is-multiline is-variable">
-        <div class="column is-8" v-if="hero">
-          <div class="card edit-detail">
+        <div class="column is-8">
+          <div class="card edit-detail" v-if="hero && hero.id">
             <header class="card-header">
               <p class="card-header-title">{{ fullName }}</p>
             </header>
