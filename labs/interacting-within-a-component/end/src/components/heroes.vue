@@ -15,11 +15,11 @@
                   <label class="input" name="id" readonly>{{hero.id}}</label>
                 </div>
                 <div class="field">
-                  <label class="label" for="name">first name</label>
+                  <label class="label" for="firstName">first name</label>
                   <input class="input" name="firstName" type="text" v-model="hero.firstName">
                 </div>
                 <div class="field">
-                  <label class="label" for="name">last name</label>
+                  <label class="label" for="lastName">last name</label>
                   <input class="input" name="lastName" v-model="hero.lastName">
                 </div>
                 <div class="field">
@@ -68,10 +68,8 @@ export default {
     this.loadHero();
   },
   computed: {
-    fullName: {
-      get() {
-        return `${this.hero.firstName} ${this.hero.lastName}`;
-      }
+    fullName() {
+      return `${this.hero.firstName} ${this.hero.lastName}`;
     }
   },
   watch: {
@@ -119,7 +117,7 @@ export default {
         description: "the cat whisperer"
       };
       return new Promise((resolve, reject) => {
-        setTimeout(() => resolve(hero), 3000);
+        setTimeout(() => resolve(hero), 2000);
       });
     }
   }
