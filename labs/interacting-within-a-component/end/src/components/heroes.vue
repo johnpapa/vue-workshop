@@ -3,7 +3,7 @@
     <div class="section content-title-group">
       <h2 class="title">Hero</h2>
       <div class="columns is-multiline is-variable">
-        <div class="column is-8">
+        <div class="column is-8" v-if="hero">
           <div class="card edit-detail">
             <header class="card-header">
               <p class="card-header-title">{{ fullName }}</p>
@@ -16,49 +16,23 @@
                 </div>
                 <div class="field">
                   <label class="label" for="name">first name</label>
-                  <input
-                    class="input"
-                    name="firstName"
-                    placeholder="e.g. Colleen"
-                    type="text"
-                    v-model="hero.firstName"
-                  >
+                  <input class="input" name="firstName" type="text" v-model="hero.firstName">
                 </div>
                 <div class="field">
                   <label class="label" for="name">last name</label>
-                  <input
-                    class="input"
-                    name="lastName"
-                    placeholder="e.g. Papa"
-                    type="text"
-                    v-model="hero.lastName"
-                  >
+                  <input class="input" name="lastName" v-model="hero.lastName">
                 </div>
                 <div class="field">
                   <label class="label" for="description">description</label>
-                  <input
-                    class="input"
-                    name="description"
-                    placeholder="dance fight!"
-                    type="text"
-                    v-model="hero.description"
-                  >
+                  <input class="input" name="description" type="text" v-model="hero.description">
                 </div>
                 <div class="field">
-                  <label class="label" for="address">address</label>
-                  <input class="input" name="address" type="text" v-model="hero.address">
+                  <label class="label" for="capeCounter">cape counter</label>
+                  <input class="input" name="capeCounter" type="number" v-model="hero.capeCounter">
                 </div>
                 <div class="field">
-                  <label class="label" for="city">city</label>
-                  <input class="input" name="city" type="text" v-model="hero.city">
-                </div>
-                <div class="field">
-                  <label class="label" for="state">state</label>
-                  <input class="input" name="state" type="text" v-model="hero.state">
-                </div>
-                <div class="field">
-                  <label class="label" for="fullAddress">Full Address</label>
-                  <label class="input" name="fullAddress" readonly>{{fullAddress}}</label>
+                  <label class="label" for="capeMessage">cape message</label>
+                  <label class="input" name="capeMessage">{{capeMessage}}</label>
                 </div>
               </div>
             </div>
@@ -73,6 +47,7 @@
               </button>
             </footer>
           </div>
+          <div class="notification is-info" v-show="message">{{message}}</div>
         </div>
       </div>
     </div>
@@ -84,32 +59,69 @@ export default {
   name: "Heroes",
   data() {
     return {
-      hero: {
-        id: 20,
-        firstName: "Madelyn",
-        lastName: "Papa",
-        address: "1 Somewhere Street",
-        city: "Tampa",
-        state: "FL",
-        description: "the cat whisperer"
-      }
+      hero: {},
+      capeMessage: "",
+      message: ""
     };
   },
+  created() {
+    this.loadHero();
+  },
   computed: {
-    fullAddress: {
-      get() {
-        return `${this.hero.address}, ${this.hero.city} ${this.hero.state}`;
-      }
-    },
     fullName: {
       get() {
         return `${this.hero.firstName} ${this.hero.lastName}`;
       }
     }
   },
+  watch: {
+    "hero.capeCounter": {
+      immediate: true,
+      handler(newValue, oldValue) {
+        console.log("Watcher evaluated!");
+        const value = parseInt(newValue, 10);
+        switch (value) {
+          case 0:
+            this.capeMessage = "Where is my cape?";
+            break;
+          case 1:
+            this.capeMessage = "One is all I need";
+            break;
+          case 2:
+            this.capeMessage = "Alway have a spare";
+            break;
+          default:
+            this.capeMessage = "You can never have enough capes";
+            break;
+        }
+      }
+    }
+  },
   methods: {
-    cancelHero() {},
-    saveHero() {}
+    cancelHero() {
+      this.loadHero();
+    },
+    async loadHero() {
+      this.hero = {};
+      this.message = "getting the hero, please be patient";
+      this.hero = await this.getHero();
+      this.message = "";
+    },
+    saveHero() {
+      alert("Save!");
+    },
+    async getHero() {
+      const hero = {
+        id: 20,
+        firstName: "Madelyn",
+        lastName: "Papa",
+        capeCounter: 1,
+        description: "the cat whisperer"
+      };
+      return new Promise((resolve, reject) => {
+        setTimeout(() => resolve(hero), 3000);
+      });
+    }
   }
 };
 </script>
