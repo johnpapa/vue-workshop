@@ -4,7 +4,8 @@
       <h2 class="title">Heroes</h2>
       <div class="columns is-multiline is-variable">
         <div class="column is-8" v-if="heroes">
-          <ul v-if="!selectedHero">
+          <!-- <ul v-if="!selectedHero"> -->
+          <ul >
             <li v-for="hero in heroes" :key="hero.id">
               <div class="card">
                 <div class="card-content">
@@ -22,12 +23,12 @@
               </div>
             </li>
           </ul>
-          <HeroDetail
+          <!-- <HeroDetail
             :hero="selectedHero"
             @save="saveHero"
             @cancel="unselectHero"
             v-if="selectedHero"
-          />
+          /> -->
           <div class="notification is-info" v-show="message">{{message}}</div>
         </div>
       </div>
@@ -36,7 +37,7 @@
 </template>
 
 <script>
-import HeroDetail from "@/components/hero-detail";
+// import HeroDetail from "@/components/hero-detail";
 
 export default {
   name: "Heroes",
@@ -46,9 +47,9 @@ export default {
       heroes: []
     };
   },
-  components: {
-    HeroDetail
-  },
+  // components: {
+  //   HeroDetail
+  // },
   created() {
     this.loadHeroes();
   },
@@ -87,15 +88,15 @@ export default {
         setTimeout(() => resolve(heroes), 500);
       });
     },
-    saveHero(hero) {
-      this.selectedHero = undefined;
-      const index = this.heroes.findIndex(h => h.id === hero.id);
-      this.heroes.splice(index, 1, hero);
-      this.heroes = [...this.heroes];
-    },
-    unselectHero() {
-      this.selectedHero = undefined;
-    }
+    // saveHero(hero) {
+    //   this.selectedHero = undefined;
+    //   const index = this.heroes.findIndex(h => h.id === hero.id);
+    //   this.heroes.splice(index, 1, hero);
+    //   this.heroes = [...this.heroes];
+    // },
+    // unselectHero() {
+    //   this.selectedHero = undefined;
+    // }
   }
 };
 </script>

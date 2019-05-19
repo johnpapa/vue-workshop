@@ -42,15 +42,16 @@
 <script>
 export default {
   name: "HeroDetail",
-  props: {
-    hero: {
-      type: Object,
-      default: () => {}
-    }
-  },
+  // props: {
+  //   hero: {
+  //     type: Object,
+  //     default: () => {}
+  //   }
+  // },
   data() {
     return {
-      clonedHero: { ...this.hero },
+      // clonedHero: { ...this.hero },
+      clonedHero: {  },
       message: ""
     };
   },
@@ -61,7 +62,7 @@ export default {
   },
   methods: {
     cancelHero() {
-      this.$emit("cancel");
+      // this.$emit("cancel");
     },
     async loadHero() {
       this.hero = {};
@@ -70,7 +71,7 @@ export default {
       this.message = "";
     },
     saveHero() {
-      this.$emit("save", this.clonedHero);
+      // this.$emit("save", this.clonedHero);
     }
   }
 };
