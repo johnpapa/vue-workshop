@@ -693,9 +693,7 @@ This lab will walk you through ... routing
 
 ### Exercise 1: Defining Routes
 
-In this exercise you'll explore the lab application code and define routes to display Villains and Orders components.
-
-
+In this exercise you'll explore the lab application code, use the Vue CLI to add routing functionality, and define routes to display Villains and Orders components. 
 
 
 #### Step 1
@@ -705,7 +703,7 @@ Open `labs/routing/begin` in your editor.
 
 #### Step 2
 
-Open a terminal window in the root of the project and run `vue add router`. This adds the Vue router to your dependencies and includes it n your app.
+Open a terminal window in the root of the project and run `vue add router`. This adds the Vue router to your dependencies and includes it in your app.
 
 When you are prompted to use history mode, type `y` and press `ENTER`.
 
@@ -908,7 +906,33 @@ Stop the server by pressing `ctrl+c`. This lab is complete.
 
 ## Lab 9: Managing State
 
-This lab will walk you through ... vuex
+This lab will walk you through using `Vuex` to handle state management in a Vue.js application.
+
+
+### Exercise 1: Adding Vuex
+
+In this exercise you'll use the Vue CLI to to add Vuex functionality into a project.
+
+
+#### Step 1
+
+Open `labs/vuex-state/begin` in your editor.
+
+
+#### Step 2
+
+Open a terminal window in the root of the project and run `vue add vuex`. This adds Vuex to your dependencies and includes it in your app.
+
+
+#### Step 3
+
+Open `package.json` and notice that a new dependecy has been added for `vuex`.
+
+#### Step 4
+
+Open the `src` folder and notice that a `store.js` file has been added. This file has also been imported into `main.js`.
+
+#### Step 5
 
 
 
