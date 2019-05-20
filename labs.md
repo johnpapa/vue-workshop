@@ -994,7 +994,119 @@ In this exercise you will create custom events that let the `HeroDetail` compone
 
 #### Step 1
 
-Hooray
+Open the `HeroDetail` view in `src/components/hero-detail.vue` and notice the methods `cancelHero` and `saveHero` have no code in them. We're going to add code that fires when the user presses the cancel and save buttons next.
+
+#### Step 2
+
+When the user presses the cancel button, fire a custom event named `cancel` from the `cancelHero` method.
+
+
+<course-item
+  type="Hint"
+  title="Need Help?">
+  Use the `this.$emit()` function.
+
+</course-item>
+
+#### Step 3
+
+When the user presses the save button, fire a custom event named `save` from the `saveHero` method. Pass the `clonedHero` as the with the event.
+
+
+<course-item
+  type="Hint"
+  title="Need Help?">
+  Use the `this.$emit()` function and pass the `clonedHero` as the second argument. Your code may look like the following.
+
+
+```javascript
+methods: {
+  cancelHero() {
+    this.$emit("cancel");
+  },
+  saveHero() {
+    this.$emit("save", this.clonedHero);
+  }
+```
+</course-item>
+
+#### Step 4
+
+Open the `Heroes` view in `src/components/heroes.vue`. Next we're going to listen for those custom events we just created.
+
+#### Step 5
+
+When the user presses the cancel button in the `HeroDetail` component, we want to set the `Heroes` component's selected hero to `undefined` (de-selecting it).
+
+Create a method in the `Heroes` component named `unselectedHero` and have it unselected the selected hero.
+
+#### Step 6
+
+In the template of your `Heroes` component, bind the `HeroDetail`'s `cancel` event to fire the method you just created in the previous step to unselect the hero.
+
+
+<course-item
+  type="Hint"
+  title="Need Help?">
+  Your code may look like the following.
+
+
+```html
+<HeroDetail :hero="selectedHero" @cancel="unselectHero" v-if="selectedHero"/>
+
+```
+</course-item>
+
+
+#### Step 7
+
+When the user presses the save button in the `HeroDetail` component, we want to set the `Heroes` component's selected hero to `undefined` (de-selecting it) and replace the hero with the updated values.
+
+Paste the following code that creates a method in the `Heroes` component named `saveHero`. Notice it unselects the `selectedHero`, first. Then it finds the hero that was just modified, replaces it in the array of heroes with the updated hero, and then clones the array to create a fresh list of heroes.
+
+
+```javascript
+saveHero(hero) {
+  this.selectedHero = undefined;
+  const index = this.heroes.findIndex(h => h.id === hero.id);
+  this.heroes.splice(index, 1, hero);
+  this.heroes = [...this.heroes];
+},
+```
+</course-item>
+
+#### Step 8
+
+In the template of your `Heroes` component, bind the `HeroDetail`'s `save` event to fire the method you just created in the previous step.
+
+
+<course-item
+  type="Hint"
+  title="Need Help?">
+  Your code may look like the following.
+
+
+```html
+<HeroDetail
+  :hero="selectedHero"
+  @save="saveHero"
+  @cancel="unselectHero"
+  v-if="selectedHero"
+/>
+```
+</course-item>
+
+
+#### Step 9
+
+Now use the running app and select a hero and edit that hero's values. Then press save. You should see the updated values appear in your hero list.
+
+When you select a hero and edit their values, then press cancel, the changes you made are ignored.
+
+#### Step 10
+
+Stop the server by pressing `ctrl+c`. This lab is complete.
+
 
 ## Lab 7: 7 - Accessing Data
 
