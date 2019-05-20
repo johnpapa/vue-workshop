@@ -21,7 +21,6 @@
                 </tr>
                 <tr class="cartTotalRow">
                     <td colspan="4" class="cartTotal">
-                        <br />
                         {{ '$' + cartTotal.toFixed(2) }}
                     </td>
                     <td>&nbsp;</td>
