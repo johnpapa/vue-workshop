@@ -2,6 +2,13 @@
   padding: 3rem 1.5rem;
 }
 
+#app {
+  margin: 36px 48px;
+  .title {
+    margin-bottom: 24px;
+  }
+}
+
 html > body {
   margin: 0 !important;
 }

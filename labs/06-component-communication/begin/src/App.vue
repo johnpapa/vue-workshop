@@ -20,10 +20,4 @@ export default {
 
 <style lang="scss">
 @import "@/design/index.scss";
-#app {
-  margin: 36px 48px;
-  .title {
-    margin-bottom: 24px
-  }
-}
 </style>
