@@ -334,7 +334,7 @@ git clone git@github.com:johnpapa/vue-workshop.git
 
 #### Step 2
 
-Open to the `labs\data-binding\begin` folder and run `npm install`
+Open to the `labs\03-data-binding\begin` folder and run `npm install`
 
 
 #### Step 3
@@ -491,7 +491,7 @@ git clone git@github.com:johnpapa/vue-workshop.git
 
 #### Step 2
 
-Open to the `labs\lists-conditionals\begin` folder and run `npm install`
+Open to the `labs\04-lists-conditionals\begin` folder and run `npm install`
 
 
 #### Step 3
@@ -674,7 +674,7 @@ In this exercise you'll use the `created` lifecycle hook to load your hero data 
 
 #### Step 1
 
-Open the `labs/interacting-within-a-component/begin` folder in your editor and run `npm install`
+Open the `labs/05-interacting-within-a-component/begin` folder in your editor and run `npm install`
 
 
 #### Step 2
@@ -888,7 +888,7 @@ In this exercise you'll explore the lab application code and define routes to di
 
 #### Step 1
 
-Open `labs/routing/begin` in your editor.
+Open `labs/08-routing/begin` in your editor.
 
 
 #### Step 2
