@@ -42,19 +42,19 @@
 <script>
 export default {
   name: "HeroDetail",
-  // props: {
-  //   hero: {
-  //     type: Object,
-  //     default: () => {}
-  //   }
-  // },
-  data() {
-    return {
-      // clonedHero: { ...this.hero },
-      clonedHero: {  },
-      message: ""
-    };
+  props: {
+    hero: {
+      type: Object,
+      default: () => {}
+    }
   },
+data() {
+  return {
+    clonedHero: { ...this.hero },
+    // clonedHero: {  },
+    message: ""
+  };
+},
   computed: {
     fullName() {
       return `${this.clonedHero.firstName} ${this.clonedHero.lastName}`;

@@ -83,7 +83,7 @@ export default {
           description: "pen wielder"
         }
       ];
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         setTimeout(() => resolve(heroes), 500);
       });
     },

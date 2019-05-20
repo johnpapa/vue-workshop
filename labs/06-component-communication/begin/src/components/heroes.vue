@@ -4,8 +4,8 @@
       <h2 class="title">Heroes</h2>
       <div class="columns is-multiline is-variable">
         <div class="column is-8" v-if="heroes">
-          <!-- <ul v-if="!selectedHero"> -->
-          <ul >
+          <ul v-if="!selectedHero">
+          <!-- <ul> -->
             <li v-for="hero in heroes" :key="hero.id">
               <div class="card">
                 <div class="card-content">
@@ -28,7 +28,8 @@
             @save="saveHero"
             @cancel="unselectHero"
             v-if="selectedHero"
-          /> -->
+          />-->
+          <HeroDetail :hero="selectedHero" v-if="selectedHero"/>
           <div class="notification is-info" v-show="message">{{message}}</div>
         </div>
       </div>
@@ -37,7 +38,7 @@
 </template>
 
 <script>
-// import HeroDetail from "@/components/hero-detail";
+import HeroDetail from "@/components/hero-detail";
 
 export default {
   name: "Heroes",
@@ -47,9 +48,9 @@ export default {
       heroes: []
     };
   },
-  // components: {
-  //   HeroDetail
-  // },
+  components: {
+    HeroDetail
+  },
   created() {
     this.loadHeroes();
   },
@@ -84,10 +85,10 @@ export default {
           description: "pen wielder"
         }
       ];
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         setTimeout(() => resolve(heroes), 500);
       });
-    },
+    }
     // saveHero(hero) {
     //   this.selectedHero = undefined;
     //   const index = this.heroes.findIndex(h => h.id === hero.id);

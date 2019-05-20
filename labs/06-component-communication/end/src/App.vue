@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1 class="title">Component Communication</h1>
-    <div class="section columns">
+    <div class="columns">
       <Heroes class="column"/>
     </div>
   </div>
