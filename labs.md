@@ -860,10 +860,141 @@ Stop the server by pressing `ctrl+c`. This lab is complete.
 
 ## Lab 6: 6 - Component Communication
 
-This lab will walk you through ... props
+This lab will walk you through how to communicate between a parent (Heroes) and child (HeroDetail) component. You will learn to use props to pass values from parent to child. You will learn how to create custom events from the child that notify the parent component when something has occurred.
 
 
+### Exercise 1: Passing a selected item to a child component
 
+In this exercise you will learn how to pass a value in data model in a parent component to a child component.
+
+#### Step 1
+
+Open the `labs/06-component-communication/begin` folder in your editor and run `npm install`
+
+
+#### Step 2
+
+Run the app using the command `npm run serve`. Then browse to [http://localhost:8080](http://localhost:8080). Notice a list of heroes are displayed but nothing visibly happens when you selected a hero.
+
+#### Step 3
+
+The `HeroDetail` component displays a hero's details in a form and should allow edits.
+
+Open the `HeroDetail` component in `src/components/hero-detail.vue` and go to the script code section.
+
+#### Step 4
+
+We want the `HeroDetail` component to accept a hero as input from a parent component. Add the `props` section to this component and define a prop named `hero`, that is of type `Object`, and defaults to a function that returns an empty object.
+
+
+<course-item
+  type="Hint"
+  title="Need Help?">
+  The `props` section should be at the same level as the `data()` function. See the following code to see what your props might look like.
+
+```javascript
+export default {
+  name: "HeroDetail",
+  props: {
+    hero: {
+      type: Object,
+      default: () => {}
+    }
+  },
+```
+</course-item>
+
+#### Step 5
+
+The `HeroDetail` component's template binds to the hero using the data model named `clonedHero`. Notice the `clonedHero` is set to an empty object currently. We could bind directly to the prop `hero`, however it is not recommended to modify the prop in a child component as data should not flow from child to parent. Thus, this component binds to the `clonedHero` data model.
+
+Now clone the `hero` prop into the `clonedHero` model.
+
+<course-item
+  type="Hint"
+  title="Need Help?">
+  You can use the spread operator to extract the `hero` prop's properties out, and then add them back to the `clonedHero`. See the following code to see what your `clonedHero` might look like.
+
+```javascript
+data() {
+  return {
+    clonedHero: { ...this.hero },
+    message: ""
+  };
+},
+```
+</course-item>
+
+
+#### Step 6
+
+Open the _Heroes_ view in `src/components/heroes.vue` and go to the script code section. Make the `HeroDetail` component a dependency of the `Heroes` component.
+
+You'll need to import the `HeroDetail` component from the `@/components/hero-detail` and add the `HeroDetail` to the `Heroes` component's `components` section.
+
+
+<course-item
+  type="Hint"
+  title="Need Help?">
+  The `components` section should be at the same level as the `data()` function. See the following code to see what your code might look like.
+
+```javascript
+import HeroDetail from "@/components/hero-detail";
+
+export default {
+  name: "Heroes",
+  data() {
+    return {
+      selectedHero: undefined,
+      heroes: []
+    };
+  },
+  components: {
+    HeroDetail
+  },
+```
+</course-item>
+
+#### Step 7
+
+Now place the `HeroDetail` component in the template, just below the closing `</ul>` tag showing the heroes list. Pass the `selectedHero` model into the `HeroDetail` component's `hero` prop, and only add this component to the DOM if a hero has actually been selected.
+
+
+<course-item
+  type="Hint"
+  title="Need Help?">
+  See the following code to see what your template might look like.
+
+```html
+<HeroDetail :hero="selectedHero" v-if="selectedHero"/>
+```
+</course-item>
+
+#### Step 8
+
+You just added a `v-if` to only show the `HeroDetail` component if a hero has been selected. Now add a similar `v-if` binding to the `<ul>` that lists the heroes, and only show the list if a hero has *not* been selected.
+
+<course-item
+  type="Hint"
+  title="Need Help?">
+  See the following code to see what your template might look like.
+
+```html
+<ul v-if="!selectedHero">
+```
+</course-item>
+
+#### Step 9
+
+Now when you use the running app and select a hero, the list should disappear and the selected hero's details should be visible.
+
+### Exercise 2: Creating custom events
+
+In this exercise you will create custom events that let the `HeroDetail` component notify its parent `Heroes` component when a user presses the cancel or save buttons.
+
+#### Step 1
+
+Hooray
 
 ## Lab 7: 7 - Accessing Data
 
