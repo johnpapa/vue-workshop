@@ -84,10 +84,10 @@ export default {
           description: "pen wielder"
         }
       ];
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         setTimeout(() => resolve(heroes), 500);
       });
-    },
+    }
     // saveHero(hero) {
     //   this.selectedHero = undefined;
     //   const index = this.heroes.findIndex(h => h.id === hero.id);
