@@ -36,7 +36,7 @@ Topics covered include:
 
 
 
-## Lab 1: Your First Vue App
+## Lab 1: 1 - Your First Vue App
 
 This lab will walk you through creating your first Vue app.
 
@@ -191,7 +191,7 @@ Your name should be displayed in your app. Type a new value and your should see 
 
 
 
-## Lab 2: Hello World! - The Vue CLI
+## Lab 2: 2 - Hello World! - The Vue CLI
 
 This lab will walk you through getting the required tools and creating your first app with the Vue CLI
 
@@ -308,7 +308,7 @@ Browse to [http://localhost:8080](http://localhost:8080) to see your app running
 
 
 
-## Lab 3: Display Data and Handling Events
+## Lab 3: 3 - Display Data and Handling Events
 
 This lab will walk you through creating a Heroes component and display data, changing data, and handling user input events.
 
@@ -334,7 +334,7 @@ git clone git@github.com:johnpapa/vue-workshop.git
 
 #### Step 2
 
-Open to the `labs\data-binding\begin` folder and run `npm install`
+Open to the `labs\03-data-binding\begin` folder and run `npm install`
 
 
 #### Step 3
@@ -465,7 +465,7 @@ When the user presses the ENTER key inside of your input element, your hero's na
 ```
 
 
-## Lab 4: Lists and Conditionals
+## Lab 4: 4 - Lists and Conditionals
 
 This lab will walk you through adding a list of heroes and showing/hiding content as appropriate.
 
@@ -491,7 +491,7 @@ git clone git@github.com:johnpapa/vue-workshop.git
 
 #### Step 2
 
-Open to the `labs\lists-conditionals\begin` folder and run `npm install`
+Open to the `labs\04-lists-conditionals\begin` folder and run `npm install`
 
 
 #### Step 3
@@ -663,28 +663,459 @@ Your template should now contain a div that looks like this:
 ```
 
 
-## Lab 5: Interacting within a Component
+## Lab 5: 5 - Interacting within a Component
 
-This lab will walk you through ... methods, watchers, computeds, filters, data
-
-
+This lab will walk you through using lifecycle hooks, using computed properties, and engaging with watchers.
 
 
-## Lab 6: Component Communication
+### Exercise 1: Using the Created LifeCycle Hook
 
-This lab will walk you through ... props
+In this exercise you'll use the `created` lifecycle hook to load your hero data your component.
+
+#### Step 1
+
+Open the `labs/05-interacting-within-a-component/begin` folder in your editor and run `npm install`
+
+
+#### Step 2
+
+Run the app using the command `npm run serve`. Then browse to [http://localhost:8080](http://localhost:8080). Notice the hero does not load. This is because we need to load the hero into the `hero` data model.
+
+#### Step 3
+
+Open the _Heroes_ view in `src/components/heroes.vue` and notice the `hero` data model is an empty object.
+
+#### Step 4
+
+Add the `created` lifecycle hook in the component. This hook is called when the component is created. Make the `created` lifecycle hook call the local method `loadHero()`, which will fill the `hero` data model.
+
+
+<course-item
+  type="Hint"
+  title="Need Help?">
+  The `created` hook should be at the same level as the `data()` function.
+
+```javascript
+data() {
+  return {
+    hero: {},
+    capeMessage: "",
+    message: ""
+  };
+},
+created() {
+  this.loadHero();
+},
+```
+</course-item>
+
+#### Step 5
+
+Notice the hero now loads in the running app!
 
 
 
+### Exercise 2: Creating a Computed Property
 
-## Lab 7: Accessing Data
+In this exercise you'll created a computed property to display the full name or your hero in the component.
+
+#### Step 1
+
+Open the _Heroes_ view in `src/components/heroes.vue` and notice the title bar says "TITLE". We are going to change that to display the hero's full name.
+
+#### Step 2
+
+Add a `computed` section in the component.
+
+
+#### Step 3
+
+Create a computed property named `fullName` in the `computed` section of the component. Make the `fullName` computed property return the first and last name of the hero, concatenated together with a space between them.
+
+
+<course-item
+  type="Hint"
+  title="Need Help?">
+  The `computed` section should be at the same level as the `data()` function. See the following code to see what your computed might look like.
+
+```javascript
+data() {
+  return {
+    hero: {},
+    capeMessage: "",
+    message: ""
+  };
+},
+computed: {
+  fullName() {
+    return `${this.hero.firstName} ${this.hero.lastName}`;
+  }
+},
+```
+</course-item>
+
+#### Step 4
+
+Now find the HTML in your template that displays "TITLE" in the header. Replace the hard coded word "TITLE" and instead render the computed property you just created.
+
+
+<course-item
+  type="Hint"
+  title="Need Help?">
+  TITLE was hard coded. But we need to use interpolation to render the `fullName` computed property. When complete, your code will look like the following:
+
+```html
+<header class="card-header">
+  <p class="card-header-title">{{ fullName }}</p>
+</header>
+```
+</course-item>
+
+
+#### Step 5
+
+Notice that after the hero loads that the title is the full name. Change the hero's first name or last name and you will see the title reflect those changes.
+
+### Exercise 3: Creating a Watcher
+
+In this exercise you will use a watcher to update the `capeMessage` data model whenever the `capeCounter` data model changes.
+
+
+#### Step 1
+
+Open the _Heroes_ view in `src/components/heroes.vue` and notice the "cape message" is empty. We are going to change that to display a different message based on the value of the `capeCounter` data model.
+
+#### Step 2
+
+Add a `watch` section in the component.
+
+
+#### Step 3
+
+Create a watcher property that watches the `hero.capeCounter` in the `watch` section of the component. Make the watcher call the `handleTheCapes()` method, passing the `newValue` to it every time the `hero.CapeCounter` changes.
+
+
+<course-item
+  type="Hint"
+  title="Need Help?">
+  The `computed` section should be at the same level as the `data()` function. See the following code to see what your computed might look like.
+
+```javascript
+data() {
+  return {
+    hero: {},
+    capeMessage: "",
+    message: ""
+  };
+},
+watch: {
+  "hero.capeCounter": {
+    handler(newValue, oldValue) {
+      this.handleTheCapes(newValue);
+    }
+  }
+},
+```
+</course-item>
+
+#### Step 4
+
+Notice that after the hero loads that the "cape message" is still empty. Now change the value in the "cape counter" input field. Notice the "cape message" updates with a message.
+
+The watcher is not firing when the data is first initialized. Let's fix that.
+
+
+#### Step 5
+
+Make the watcher trigger the callback immediately with the current value of the `hero.CapeCounter` expression.
+
+
+
+<course-item
+  type="Hint"
+  title="Need Help?">
+  The `computed` section should be at the same level as the `data()` function. See the following code to see what your computed might look like.
+
+```javascript
+watch: {
+  "hero.capeCounter": {
+    immediate: true,
+    handler(newValue, oldValue) {
+      this.handleTheCapes(newValue);
+    }
+  }
+},
+```
+</course-item>
+
+#### Step 6
+
+Notice that after the hero loads that the "cape message" is no longer empty.
+
+
+#### Step 7
+
+Stop the server by pressing `ctrl+c`. This lab is complete.
+
+
+## Lab 6: 6 - Component Communication
+
+This lab will walk you through how to communicate between a parent (Heroes) and child (HeroDetail) component. You will learn to use props to pass values from parent to child. You will learn how to create custom events from the child that notify the parent component when something has occurred.
+
+
+### Exercise 1: Passing a selected item to a child component
+
+In this exercise you will learn how to pass a value in data model in a parent component to a child component.
+
+#### Step 1
+
+Open the `labs/06-component-communication/begin` folder in your editor and run `npm install`
+
+
+#### Step 2
+
+Run the app using the command `npm run serve`. Then browse to [http://localhost:8080](http://localhost:8080). Notice a list of heroes are displayed but nothing visibly happens when you selected a hero.
+
+#### Step 3
+
+The `HeroDetail` component displays a hero's details in a form and should allow edits.
+
+Open the `HeroDetail` component in `src/components/hero-detail.vue` and go to the script code section.
+
+#### Step 4
+
+We want the `HeroDetail` component to accept a hero as input from a parent component. Add the `props` section to this component and define a prop named `hero`, that is of type `Object`, and defaults to a function that returns an empty object.
+
+
+<course-item
+  type="Hint"
+  title="Need Help?">
+  The `props` section should be at the same level as the `data()` function. See the following code to see what your props might look like.
+
+```javascript
+export default {
+  name: "HeroDetail",
+  props: {
+    hero: {
+      type: Object,
+      default: () => {}
+    }
+  },
+```
+</course-item>
+
+#### Step 5
+
+The `HeroDetail` component's template binds to the hero using the data model named `clonedHero`. Notice the `clonedHero` is set to an empty object currently. We could bind directly to the prop `hero`, however it is not recommended to modify the prop in a child component as data should not flow from child to parent. Thus, this component binds to the `clonedHero` data model.
+
+Now clone the `hero` prop into the `clonedHero` model.
+
+<course-item
+  type="Hint"
+  title="Need Help?">
+  You can use the spread operator to extract the `hero` prop's properties out, and then add them back to the `clonedHero`. See the following code to see what your `clonedHero` might look like.
+
+```javascript
+data() {
+  return {
+    clonedHero: { ...this.hero },
+    message: ""
+  };
+},
+```
+</course-item>
+
+
+#### Step 6
+
+Open the _Heroes_ view in `src/components/heroes.vue` and go to the script code section. Make the `HeroDetail` component a dependency of the `Heroes` component.
+
+You'll need to import the `HeroDetail` component from the `@/components/hero-detail` and add the `HeroDetail` to the `Heroes` component's `components` section.
+
+
+<course-item
+  type="Hint"
+  title="Need Help?">
+  The `components` section should be at the same level as the `data()` function. See the following code to see what your code might look like.
+
+```javascript
+import HeroDetail from "@/components/hero-detail";
+
+export default {
+  name: "Heroes",
+  data() {
+    return {
+      selectedHero: undefined,
+      heroes: []
+    };
+  },
+  components: {
+    HeroDetail
+  },
+```
+</course-item>
+
+#### Step 7
+
+Now place the `HeroDetail` component in the template, just below the closing `</ul>` tag showing the heroes list. Pass the `selectedHero` model into the `HeroDetail` component's `hero` prop, and only add this component to the DOM if a hero has actually been selected.
+
+
+<course-item
+  type="Hint"
+  title="Need Help?">
+  See the following code to see what your template might look like.
+
+```html
+<HeroDetail :hero="selectedHero" v-if="selectedHero"/>
+```
+</course-item>
+
+#### Step 8
+
+You just added a `v-if` to only show the `HeroDetail` component if a hero has been selected. Now add a similar `v-if` binding to the `<ul>` that lists the heroes, and only show the list if a hero has *not* been selected.
+
+<course-item
+  type="Hint"
+  title="Need Help?">
+  See the following code to see what your template might look like.
+
+```html
+<ul v-if="!selectedHero">
+```
+</course-item>
+
+#### Step 9
+
+Now when you use the running app and select a hero, the list should disappear and the selected hero's details should be visible.
+
+### Exercise 2: Creating custom events
+
+In this exercise you will create custom events that let the `HeroDetail` component notify its parent `Heroes` component when a user presses the cancel or save buttons.
+
+#### Step 1
+
+Open the `HeroDetail` view in `src/components/hero-detail.vue` and notice the methods `cancelHero` and `saveHero` have no code in them. We're going to add code that fires when the user presses the cancel and save buttons next.
+
+#### Step 2
+
+When the user presses the cancel button, fire a custom event named `cancel` from the `cancelHero` method.
+
+
+<course-item
+  type="Hint"
+  title="Need Help?">
+  Use the `this.$emit()` function.
+
+</course-item>
+
+#### Step 3
+
+When the user presses the save button, fire a custom event named `save` from the `saveHero` method. Pass the `clonedHero` as the with the event.
+
+
+<course-item
+  type="Hint"
+  title="Need Help?">
+  Use the `this.$emit()` function and pass the `clonedHero` as the second argument. Your code may look like the following.
+
+
+```javascript
+methods: {
+  cancelHero() {
+    this.$emit("cancel");
+  },
+  saveHero() {
+    this.$emit("save", this.clonedHero);
+  }
+```
+</course-item>
+
+#### Step 4
+
+Open the `Heroes` view in `src/components/heroes.vue`. Next we're going to listen for those custom events we just created.
+
+#### Step 5
+
+When the user presses the cancel button in the `HeroDetail` component, we want to set the `Heroes` component's selected hero to `undefined` (de-selecting it).
+
+Create a method in the `Heroes` component named `unselectedHero` and have it unselected the selected hero.
+
+#### Step 6
+
+In the template of your `Heroes` component, bind the `HeroDetail`'s `cancel` event to fire the method you just created in the previous step to unselect the hero.
+
+
+<course-item
+  type="Hint"
+  title="Need Help?">
+  Your code may look like the following.
+
+
+```html
+<HeroDetail :hero="selectedHero" @cancel="unselectHero" v-if="selectedHero"/>
+
+```
+</course-item>
+
+
+#### Step 7
+
+When the user presses the save button in the `HeroDetail` component, we want to set the `Heroes` component's selected hero to `undefined` (de-selecting it) and replace the hero with the updated values.
+
+Paste the following code that creates a method in the `Heroes` component named `saveHero`. Notice it unselects the `selectedHero`, first. Then it finds the hero that was just modified, replaces it in the array of heroes with the updated hero, and then clones the array to create a fresh list of heroes.
+
+
+```javascript
+saveHero(hero) {
+  this.selectedHero = undefined;
+  const index = this.heroes.findIndex(h => h.id === hero.id);
+  this.heroes.splice(index, 1, hero);
+  this.heroes = [...this.heroes];
+},
+```
+</course-item>
+
+#### Step 8
+
+In the template of your `Heroes` component, bind the `HeroDetail`'s `save` event to fire the method you just created in the previous step.
+
+
+<course-item
+  type="Hint"
+  title="Need Help?">
+  Your code may look like the following.
+
+
+```html
+<HeroDetail
+  :hero="selectedHero"
+  @save="saveHero"
+  @cancel="unselectHero"
+  v-if="selectedHero"
+/>
+```
+</course-item>
+
+
+#### Step 9
+
+Now use the running app and select a hero and edit that hero's values. Then press save. You should see the updated values appear in your hero list.
+
+When you select a hero and edit their values, then press cancel, the changes you made are ignored.
+
+#### Step 10
+
+Stop the server by pressing `ctrl+c`. This lab is complete.
+
+
+## Lab 7: 7 - Accessing Data
 
 This lab will walk you through ... axios and http
 
 
 
 
-## Lab 8: Routing
+## Lab 8: 8 - Routing
 
 This lab will walk you through ... routing
 
@@ -698,7 +1129,7 @@ In this exercise you'll explore the lab application code, use the Vue CLI to add
 
 #### Step 1
 
-Open `labs/routing/begin` in your editor.
+Open `labs/08-routing/begin` in your editor.
 
 
 #### Step 2
@@ -904,7 +1335,7 @@ Stop the server by pressing `ctrl+c`. This lab is complete.
 
 
 
-## Lab 9: Managing State
+## Lab 9: 9 - Managing State
 
 This lab will walk you through using `Vuex` to handle state management in a Vue.js application.
 
