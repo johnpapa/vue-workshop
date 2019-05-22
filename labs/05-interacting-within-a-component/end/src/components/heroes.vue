@@ -119,7 +119,7 @@ export default {
         capeCounter: 1,
         description: "the cat whisperer"
       };
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         setTimeout(() => resolve(hero), 2000);
       });
     }
