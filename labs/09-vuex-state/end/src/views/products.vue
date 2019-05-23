@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { mapState, mapActions, mapMutations } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 import Cart from '@/views/cart';
 
 export default {
