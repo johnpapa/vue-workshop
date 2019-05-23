@@ -1,0 +1,6 @@
+[
+    { "id": 11, "name": "Blow torch", "price": 399.99 },
+    { "id": 12, "name": "Hammer ", "price": 59.99 },
+    { "id": 13, "name": "TV", "price": 899.99 },
+    { "id": 14, "name": "Surfboard", "price": 679.0 }
+]

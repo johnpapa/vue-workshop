@@ -1337,12 +1337,10 @@ Stop the server by pressing `ctrl+c`. This lab is complete.
 
 ## Lab 9: 9 - Managing State
 
-This lab will walk you through using `Vuex` to handle state management in a Vue.js application.
+This lab will walk you through using `Vuex` to handle state management in a Vue.js application that will allow users to work with a shopping cart.
 
 
-### Exercise 1: Adding Vuex
 
-In this exercise you'll use the Vue CLI to to add Vuex functionality into a project.
 
 
 #### Step 1
@@ -1361,9 +1359,213 @@ Open `package.json` and notice that a new dependecy has been added for `vuex`.
 
 #### Step 4
 
-Open the `src` folder and notice that a `store.js` file has been added. This file has also been imported into `main.js`.
+Run `npm install` to install the project dependencies.
 
 #### Step 5
+
+Let's now look at what the `vue add vuex` command did to the project. Open the `src` folder and notice that a `store.js` file has been added. It does the following:
+
+* Tells Vue to use Vuex by calling `Vue.use(Vuex)`
+* Creates a new `Vuex.Store` object with `state`, `mutations`, `actions`, and `getters` properties.
+
+<course-item
+  type="Note"
+  title="">
+The `store.js` file is also imported into `main.js` and is passed to the `Vue` object created there.
+```javascript
+new Vue({
+  router,
+  store,
+  render: h => h(App)
+}).$mount('#app');
+```
+</course-item>
+
+#### Step 6
+
+Add the following code **immediately above** the `export` statement in `store.js`. This URL will be used to retrieve products used in the application.
+
+```javascript
+const URL = 'http://localhost:8080/products.json';
+```
+
+#### Step 7
+
+Locate the `state` property in `Vuex.Store` and add the following code into it.
+
+```javascript
+cart: [],
+products: []
+```
+
+<course-item
+  type="Note"
+  title="">
+These two properties will be stored by Vuex in the store and be accessible throughout the entire application.
+</course-item>
+
+#### Step 8
+
+Copy and paste the following code into the `mutations` property in `Vuex.Store` to provide add, remove, and clear functionality to the store.
+
+```javascript
+addProduct({ products }, product) {
+  products.push(product)
+},
+addToCart({ cart }, product) {
+  const itemIndex = cart.findIndex(item => item.id === product.id);
+  if (itemIndex === -1) {
+    cart.push({ ...product, quantity: 1, total: product.price })
+  } else {
+    let cartItem = cart[itemIndex];
+    cartItem.quantity++;
+    cartItem.total = cartItem.price * cartItem.quantity;
+  }
+},
+removeFromCart({ cart }, item) {
+  const itemIndex = cart.findIndex(cartItem => cartItem.id === item.id);
+  cart.splice(itemIndex, 1);
+},
+clearCart(state) {
+  state.cart = [];
+}
+```
+
+#### Step 9
+
+The Vuex state stores products that will be retrieved from the server. To handle retrieving the products using `fetch`, add the following code into the actions property.
+
+```javascript
+getProducts({ state, commit }) {
+  if (!state.products.length) {
+    fetch(URL)
+      .then(res => res.json())
+      .then(products => {
+        for (let product of products) {
+          commit('addProduct', {
+            id: product.id,
+            name: product.name,
+            price: product.price
+          });
+        }
+      });
+  }
+}
+```
+
+<course-item
+  type="Note"
+  title="">
+Note that Axios or another library could be used to make the HTTP call as well.
+</course-item>
+
+#### Step 10
+
+Your work in `store.js` is almost done! To finish things up, add the following code into the `getters` property to create a custom `cartTotal` property that can return the shopping cart's total cost.
+
+```javascript
+cartTotal: ({ cart }) => {
+  let total = 0;
+  for (let item of cart) {
+    total += item.price * item.quantity;
+  }
+  return total;
+}
+```
+
+#### Step 11
+
+Save `store.js` before continuing.
+
+
+
+### Exercise 2: Using the Vuex Store in Components
+
+In this exercise you'll add functionality into components to handle storing and retrieving state from the Vuex store.
+
+#### Step 1
+
+Open `src/views/products.vue` in your editor and take a moment to note the following:
+
+* Examine the HTML code in the template. Notice that it renders products as well as a `Cart` component.
+* Notice that Vuex functionality is imported in the `scripts` section. The `mapState` and `mapActions` functions will be used to access store state and call into the store's actions.
+
+#### Step 2
+
+Add the following code into the `methods` property:
+
+```javascript
+...mapActions(['getProducts']),
+
+addToCart(product) {
+  this.$store.commit('addToCart', product);
+}
+```
+
+<course-item
+  type="Note"
+  title="">
+The `mapActions` code makes the `getProducts` action in the Vuex store accessible to the component. The `addToCart()` function handles adding a product into the store's state by using its `commit()` function.
+</course-item>
+
+#### Step 3
+
+Add the following code into the component's `computed` property. 
+
+```javascript
+...mapState(['products'])
+```
+
+<course-item
+  type="Note"
+  title="">
+This will allow the `products` property from the Vuex store's `state` to be used in the component. Take a moment to locate the `v-for` directive in the component's template to see where the `products` property is used.
+</course-item>
+
+#### Step 4
+
+Open `src/views/cart.vue` in your editor. Notice that the component's template handles rendering cart items.
+
+
+#### Step 5
+
+Locate the `scripts` section and note how it uses `mapState()` and `mapGetters()` to make the store's `cart` and `cartTotal` values available to the component.
+
+#### Step 6
+
+Add the following code into the `methods` property of the component.
+
+```javascript
+...mapMutations([
+    'removeFromCart',
+    'clearCart'])
+```
+
+<course-item
+  type="Note"
+  title="">
+This code allows the `removeFromCart()` and `clearCart()` functions defined in the store's mutations property to be used by the `Cart` component. The `removeFromCart()` function is called when a button in the template is clicked. The `clearCart()` function isn't currently used, but could easily be implmented.
+</course-item>
+
+#### Step 7
+
+Save all of the files you've modified up to this point.
+
+#### Step 8
+
+Run the following command to start the server and run the application.
+
+```console
+npm run serve
+```
+
+#### Step 9
+
+Click on the `Products` item in the menu. Notice that products are displayed but that the cart is empty. Click on the `Buy` button next to a product and it should be added into the cart. You can click on a product multiple times to increase the quantity purchased. Cart items can be removed by clicking the `X` button next to the item.
+
+#### Step 10
+
+Congratulations! You've successfully implemented a Vuex store!
 
 
 
