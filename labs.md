@@ -1124,7 +1124,7 @@ This lab will walk you through ... routing
 
 ### Exercise 1: Defining Routes
 
-In this exercise you'll explore the lab application code, use the Vue CLI to add routing functionality, and define routes to display Villains and Orders components. 
+In this exercise you'll explore the lab application code, use the Vue CLI to add routing functionality, and define routes to display Villains and Orders components.
 
 
 #### Step 1
@@ -1141,7 +1141,7 @@ When you are prompted to use history mode, type `y` and press `ENTER`.
 
 #### Step 3
 
-Notice that the Vue CLi tells you that several files have been updated. The `router.js` file now contains all of your routing/navigation logic and tells Vue to use the router. The `App.vue` file now contains a place for the routes to show their views (the `<router-view>`).
+Notice that the Vue CLI tells you that several files have been updated. The `router.js` file now contains all of your routing/navigation logic and tells Vue to use the router. The `App.vue` file now contains a place for the routes to show their views (the `<router-view>`).
 
 ```command-line
 The following files have been updated / added:
@@ -1353,7 +1353,7 @@ Open a terminal window in the root of the project and run `vue add vuex`. This a
 
 #### Step 3
 
-Open `package.json` and notice that a new dependecy has been added for `vuex`.
+Open `package.json` and notice that a new dependency has been added for `vuex`.
 
 #### Step 4
 
@@ -1364,7 +1364,7 @@ Run `npm install` to install the project dependencies.
 Let's now look at what the `vue add vuex` command did to the project. Open the `src` folder and notice that a `store.js` file has been added. It does the following:
 
 * Tells Vue to use Vuex by calling `Vue.use(Vuex)`
-* Creates a new `Vuex.Store` object with `state`, `mutations`, and `actions`.
+* Creates a new `Vuex.Store` object with `state`, `mutations`, `actions`, and `getters` properties.
 
 <course-item
   type="Note"
@@ -1459,7 +1459,7 @@ Note that Axios or another library could be used to make the HTTP call as well a
 
 #### Step 10
 
-Your work in `store.js` is almost done! To finish things up, add a `getters` property into the `Vuex.Store` object to create a custom `cartTotal` property. This property will return the shopping cart's total cost. 
+Your work in `store.js` is almost done! To finish things up, add a `getters` property into the `Vuex.Store` object to create a custom `cartTotal` property. This property will return the shopping cart's total cost.
 
 ```javascript
 getters: {
@@ -1494,7 +1494,7 @@ In this exercise you'll add functionality into components to handle storing and 
 Open `src/views/products.vue` in your editor and take a moment to note the following:
 
 * Examine the HTML code in the template. Notice that it renders products as well as a `Cart` component.
-* Notice that Vuex functionality is imported in the `scripts` section. The `mapState` and `mapActions` functions will be used to access Vuex store state and call into the store's actions.
+* Notice that Vuex functionality is imported in the `scripts` section. The `mapState` and `mapActions` functions will be used to access store state and call into the store's actions.
 
 #### Step 2
 
@@ -1516,7 +1516,7 @@ The `mapActions` code makes the `getProducts` action in the Vuex store accessibl
 
 #### Step 3
 
-Add the following code into the component's `computed` property. 
+Add the following code into the component's `computed` property.
 
 ```javascript
 ...mapState(['products'])

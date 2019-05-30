@@ -63,6 +63,12 @@ export default {
     cancelHero() {
       this.$emit("cancel");
     },
+    async loadHero() {
+      this.hero = {};
+      this.message = "getting the hero, please be patient";
+      this.hero = await this.getHero();
+      this.message = "";
+    },
     saveHero() {
       this.$emit("save", this.clonedHero);
     }
