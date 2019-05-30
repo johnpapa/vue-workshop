@@ -668,9 +668,14 @@ Your template should now contain a div that looks like this:
 This lab will walk you through using lifecycle hooks, using computed properties, and engaging with watchers.
 
 
+
+
 ### Exercise 1: Using the Created LifeCycle Hook
 
 In this exercise you'll use the `created` lifecycle hook to load your hero data your component.
+
+
+
 
 #### Step 1
 
@@ -681,9 +686,11 @@ Open the `labs/05-interacting-within-a-component/begin` folder in your editor an
 
 Run the app using the command `npm run serve`. Then browse to [http://localhost:8080](http://localhost:8080). Notice the hero does not load. This is because we need to load the hero into the `hero` data model.
 
+
 #### Step 3
 
 Open the _Heroes_ view in `src/components/heroes.vue` and notice the `hero` data model is an empty object.
+
 
 #### Step 4
 
@@ -719,9 +726,13 @@ Notice the hero now loads in the running app!
 
 In this exercise you'll created a computed property to display the full name or your hero in the component.
 
+
+
+
 #### Step 1
 
 Open the _Heroes_ view in `src/components/heroes.vue` and notice the title bar says "TITLE". We are going to change that to display the hero's full name.
+
 
 #### Step 2
 
@@ -771,19 +782,23 @@ Now find the HTML in your template that displays "TITLE" in the header. Replace 
 ```
 </course-item>
 
-
 #### Step 5
 
 Notice that after the hero loads that the title is the full name. Change the hero's first name or last name and you will see the title reflect those changes.
+
+
 
 ### Exercise 3: Creating a Watcher
 
 In this exercise you will use a watcher to update the `capeMessage` data model whenever the `capeCounter` data model changes.
 
 
+
+
 #### Step 1
 
 Open the _Heroes_ view in `src/components/heroes.vue` and notice the "cape message" is empty. We are going to change that to display a different message based on the value of the `capeCounter` data model.
+
 
 #### Step 2
 
@@ -830,7 +845,6 @@ The watcher is not firing when the data is first initialized. Let's fix that.
 Make the watcher trigger the callback immediately with the current value of the `hero.CapeCounter` expression.
 
 
-
 <course-item
   type="Hint"
   title="Need Help?">
@@ -858,14 +872,20 @@ Notice that after the hero loads that the "cape message" is no longer empty.
 Stop the server by pressing `ctrl+c`. This lab is complete.
 
 
+
 ## Lab 6: 6 - Component Communication
 
 This lab will walk you through how to communicate between a parent (Heroes) and child (HeroDetail) component. You will learn to use props to pass values from parent to child. You will learn how to create custom events from the child that notify the parent component when something has occurred.
 
 
+
+
 ### Exercise 1: Passing a selected item to a child component
 
 In this exercise you will learn how to pass a value in data model in a parent component to a child component.
+
+
+
 
 #### Step 1
 
@@ -876,11 +896,13 @@ Open the `labs/06-component-communication/begin` folder in your editor and run `
 
 Run the app using the command `npm run serve`. Then browse to [http://localhost:8080](http://localhost:8080). Notice a list of heroes are displayed but nothing visibly happens when you selected a hero.
 
+
 #### Step 3
 
 The `HeroDetail` component displays a hero's details in a form and should allow edits.
 
 Open the `HeroDetail` component in `src/components/hero-detail.vue` and go to the script code section.
+
 
 #### Step 4
 
@@ -910,6 +932,7 @@ The `HeroDetail` component's template binds to the hero using the data model nam
 
 Now clone the `hero` prop into the `clonedHero` model.
 
+
 <course-item
   type="Hint"
   title="Need Help?">
@@ -924,7 +947,6 @@ data() {
 },
 ```
 </course-item>
-
 
 #### Step 6
 
@@ -972,7 +994,8 @@ Now place the `HeroDetail` component in the template, just below the closing `</
 
 #### Step 8
 
-You just added a `v-if` to only show the `HeroDetail` component if a hero has been selected. Now add a similar `v-if` binding to the `<ul>` that lists the heroes, and only show the list if a hero has *not* been selected.
+You just added a `v-if` to only show the `HeroDetail` component if a hero has been selected. Now add a similar `v-if` binding to the `<ul>` that lists the heroes, and only show the list if a hero has _not_ been selected.
+
 
 <course-item
   type="Hint"
@@ -988,13 +1011,19 @@ You just added a `v-if` to only show the `HeroDetail` component if a hero has be
 
 Now when you use the running app and select a hero, the list should disappear and the selected hero's details should be visible.
 
+
+
 ### Exercise 2: Creating custom events
 
 In this exercise you will create custom events that let the `HeroDetail` component notify its parent `Heroes` component when a user presses the cancel or save buttons.
 
+
+
+
 #### Step 1
 
 Open the `HeroDetail` view in `src/components/hero-detail.vue` and notice the methods `cancelHero` and `saveHero` have no code in them. We're going to add code that fires when the user presses the cancel and save buttons next.
+
 
 #### Step 2
 
@@ -1018,7 +1047,6 @@ When the user presses the save button, fire a custom event named `save` from the
   title="Need Help?">
   Use the `this.$emit()` function and pass the `clonedHero` as the second argument. Your code may look like the following.
 
-
 ```javascript
 methods: {
   cancelHero() {
@@ -1034,11 +1062,13 @@ methods: {
 
 Open the `Heroes` view in `src/components/heroes.vue`. Next we're going to listen for those custom events we just created.
 
+
 #### Step 5
 
 When the user presses the cancel button in the `HeroDetail` component, we want to set the `Heroes` component's selected hero to `undefined` (de-selecting it).
 
 Create a method in the `Heroes` component named `unselectedHero` and have it unselected the selected hero.
+
 
 #### Step 6
 
@@ -1050,20 +1080,16 @@ In the template of your `Heroes` component, bind the `HeroDetail`'s `cancel` eve
   title="Need Help?">
   Your code may look like the following.
 
-
 ```html
 <HeroDetail :hero="selectedHero" @cancel="unselectHero" v-if="selectedHero"/>
-
 ```
 </course-item>
-
 
 #### Step 7
 
 When the user presses the save button in the `HeroDetail` component, we want to set the `Heroes` component's selected hero to `undefined` (de-selecting it) and replace the hero with the updated values.
 
 Paste the following code that creates a method in the `Heroes` component named `saveHero`. Notice it unselects the `selectedHero`, first. Then it finds the hero that was just modified, replaces it in the array of heroes with the updated hero, and then clones the array to create a fresh list of heroes.
-
 
 ```javascript
 saveHero(hero) {
@@ -1073,7 +1099,6 @@ saveHero(hero) {
   this.heroes = [...this.heroes];
 },
 ```
-</course-item>
 
 #### Step 8
 
@@ -1085,7 +1110,6 @@ In the template of your `Heroes` component, bind the `HeroDetail`'s `save` event
   title="Need Help?">
   Your code may look like the following.
 
-
 ```html
 <HeroDetail
   :hero="selectedHero"
@@ -1096,16 +1120,17 @@ In the template of your `Heroes` component, bind the `HeroDetail`'s `save` event
 ```
 </course-item>
 
-
 #### Step 9
 
 Now use the running app and select a hero and edit that hero's values. Then press save. You should see the updated values appear in your hero list.
 
 When you select a hero and edit their values, then press cancel, the changes you made are ignored.
 
+
 #### Step 10
 
 Stop the server by pressing `ctrl+c`. This lab is complete.
+
 
 
 ## Lab 7: 7 - Accessing Data
@@ -1124,7 +1149,9 @@ This lab will walk you through ... routing
 
 ### Exercise 1: Defining Routes
 
-In this exercise you'll explore the lab application code, use the Vue CLI to add routing functionality, and define routes to display Villains and Orders components.
+In this exercise you'll explore the lab application code and define routes to display Villains and Orders components.
+
+
 
 
 #### Step 1
@@ -1134,14 +1161,14 @@ Open `labs/08-routing/begin` in your editor.
 
 #### Step 2
 
-Open a terminal window in the root of the project and run `vue add router`. This adds the Vue router to your dependencies and includes it in your app.
+Open a terminal window in the root of the project and run `vue add router`. This adds the Vue router to your dependencies and includes it n your app.
 
 When you are prompted to use history mode, type `y` and press `ENTER`.
 
 
 #### Step 3
 
-Notice that the Vue CLI tells you that several files have been updated. The `router.js` file now contains all of your routing/navigation logic and tells Vue to use the router. The `App.vue` file now contains a place for the routes to show their views (the `<router-view>`).
+Notice that the Vue CLi tells you that several files have been updated. The `router.js` file now contains all of your routing/navigation logic and tells Vue to use the router. The `App.vue` file now contains a place for the routes to show their views (the `<router-view>`).
 
 ```command-line
 The following files have been updated / added:
@@ -1341,6 +1368,14 @@ This lab will walk you through using `Vuex` to handle state management in a Vue.
 
 
 
+
+### Exercise 1: Create Your Vuex Store
+
+In this exercise you'll add Vuex to your app and create your data store.
+
+
+
+
 #### Step 1
 
 Open `labs/vuex-state/begin` in your editor.
@@ -1355,28 +1390,26 @@ Open a terminal window in the root of the project and run `vue add vuex`. This a
 
 Open `package.json` and notice that a new dependency has been added for `vuex`.
 
+
 #### Step 4
 
 Run `npm install` to install the project dependencies.
+
 
 #### Step 5
 
 Let's now look at what the `vue add vuex` command did to the project. Open the `src` folder and notice that a `store.js` file has been added. It does the following:
 
-* Tells Vue to use Vuex by calling `Vue.use(Vuex)`
-* Creates a new `Vuex.Store` object with `state`, `mutations`, `actions`, and `getters` properties.
+*   Tells Vue to use Vuex by calling `Vue.use(Vuex)`
+
+*   Creates a new `Vuex.Store` object with `state`, `mutations`, `actions`, and `getters` properties.
+
 
 <course-item
   type="Note"
   title="">
-The `store.js` file is also imported into `main.js` and is passed to the `Vue` object created there.
-```javascript
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app');
-```
+  The `store.js` file is also imported into `main.js` and is passed to the `Vue` object created there.
+
 </course-item>
 
 #### Step 6
@@ -1399,7 +1432,8 @@ products: []
 <course-item
   type="Note"
   title="">
-These two properties will be stored by Vuex in the store and be accessible throughout the entire application.
+  These two properties will be stored by Vuex in the store and be accessible throughout the entire application.
+
 </course-item>
 
 #### Step 8
@@ -1454,7 +1488,8 @@ getProducts({ state, commit }) {
 <course-item
   type="Note"
   title="">
-Note that Axios or another library could be used to make the HTTP call as well as shown in the HTTP lab.
+  Note that Axios or another library could be used to make the HTTP call as well as shown in the HTTP lab.
+
 </course-item>
 
 #### Step 10
@@ -1476,7 +1511,8 @@ getters: {
 <course-item
   type="Note"
   title="">
-Note that Axios or another library could be used to Don't forget to add a comma after the last `actions` property bracket.
+  Note that Axios or another library could be used to Don't forget to add a comma after the last `actions` property bracket.
+
 </course-item>
 
 #### Step 11
@@ -1489,12 +1525,17 @@ Save `store.js` before continuing.
 
 In this exercise you'll add functionality into components to handle storing and retrieving state from the Vuex store.
 
+
+
+
 #### Step 1
 
 Open `src/views/products.vue` in your editor and take a moment to note the following:
 
-* Examine the HTML code in the template. Notice that it renders products as well as a `Cart` component.
-* Notice that Vuex functionality is imported in the `scripts` section. The `mapState` and `mapActions` functions will be used to access store state and call into the store's actions.
+*   Examine the HTML code in the template. Notice that it renders products as well as a `Cart` component.
+
+*   Notice that Vuex functionality is imported in the `scripts` section. The `mapState` and `mapActions` functions will be used to access store state and call into the store's actions.
+
 
 #### Step 2
 
@@ -1511,7 +1552,8 @@ addToCart(product) {
 <course-item
   type="Note"
   title="">
-The `mapActions` code makes the `getProducts` action in the Vuex store accessible to the component. The `addToCart()` function handles adding a product into the store's state by using its `commit()` function.
+  The `mapActions` code makes the `getProducts` action in the Vuex store accessible to the component. The `addToCart()` function handles adding a product into the store's state by using its `commit()` function.
+
 </course-item>
 
 #### Step 3
@@ -1525,7 +1567,8 @@ Add the following code into the component's `computed` property.
 <course-item
   type="Note"
   title="">
-This will allow the `products` property from the Vuex store's `state` to be used in the component. Take a moment to locate the `v-for` directive in the component's template to see where the `products` property is used.
+  This will allow the `products` property from the Vuex store's `state` to be used in the component. Take a moment to locate the `v-for` directive in the component's template to see where the `products` property is used.
+
 </course-item>
 
 #### Step 4
@@ -1536,6 +1579,7 @@ Open `src/views/cart.vue` in your editor. Notice that the component's template h
 #### Step 5
 
 Locate the `scripts` section and note how it uses `mapState()` and `mapGetters()` to make the store's `cart` and `cartTotal` values available to the component.
+
 
 #### Step 6
 
@@ -1550,12 +1594,14 @@ Add the following code into the `methods` property of the component.
 <course-item
   type="Note"
   title="">
-This code allows the `removeFromCart()` and `clearCart()` functions defined in the store's mutations property to be used by the `Cart` component. The `removeFromCart()` function is called when a button in the template is clicked. The `clearCart()` function isn't currently used, but could easily be implemented.
+  This code allows the `removeFromCart()` and `clearCart()` functions defined in the store's mutations property to be used by the `Cart` component. The `removeFromCart()` function is called when a button in the template is clicked. The `clearCart()` function isn't currently used, but could easily be implemented.
+
 </course-item>
 
 #### Step 7
 
 Save all of the files you've modified up to this point.
+
 
 #### Step 8
 
@@ -1569,10 +1615,10 @@ npm run serve
 
 Click on the `Products` item in the menu. Notice that products are displayed but that the cart is empty. Click on the `Buy` button next to a product and it should be added into the cart. You can click on a product multiple times to increase the quantity purchased. Cart items can be removed by clicking the `X` button next to the item.
 
+
 #### Step 10
 
 Congratulations! You've successfully implemented a Vuex store!
-
 
 
 
