@@ -1219,7 +1219,7 @@ Open `src/components/heroes.vue` in the editor.
 
 #### Step 2
 
-Take a moment to explore the HTML code located in the template as well as the script section. Notice that the template handles looping through heroes and displaying them as cards.
+Take a moment to explore the HTML code located in the template as well as the script section. Notice that the template handles looping through heroes and displaying them as cards. The code handles loading heroes and performing other functionality.
 
 #### Step 3
 
@@ -1231,7 +1231,7 @@ import getHeroes from "@/heroes";
 
 #### Step 4
 
-Add the following code into the existing `getHeroes()` function to handle calling the server to retrieve heroes using the `axios` library.
+Add the following code into the existing `getHeroes()` function within the component code to handle calling the server to retrieve heroes using the `axios` library.
 
 ```javascript
 return await getHeroes();
