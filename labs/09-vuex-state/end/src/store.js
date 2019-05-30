@@ -27,13 +27,13 @@ export default new Vuex.Store({
     removeFromCart({ cart }, item) {
       const itemIndex = cart.findIndex(cartItem => cartItem.id === item.id);
       cart.splice(itemIndex, 1);
-    },
-    clearCart(state) {
-      state.cart = [];
     }
   },
   actions: {
-    getProducts({ state, commit }) {
+    addToCartAction({ commit }, product) {
+      commit('addToCart', product);
+    },
+    getProductsAction({ state, commit }) {
       if (!state.products.length) {
         fetch(URL)
           .then(res => res.json())
@@ -47,6 +47,9 @@ export default new Vuex.Store({
             }
           });
       }
+    },
+    removeFromCartAction({ commit }, item) {
+      commit('removeFromCart', item);
     }
   },
   getters: {

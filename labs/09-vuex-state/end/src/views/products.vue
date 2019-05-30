@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <div class="products">
-        <h2>Products</h2>
+        <h2>Villain Products</h2>
         <table class="products">
           <tr>
             <th>Name</th>
@@ -13,7 +13,7 @@
             <td>{{ product.name }}</td>
             <td>{{ '$' + product.price.toFixed(2) }}</td>
             <td class="buy">
-              <button @click="addToCart(product)">Buy</button>
+              <button @click="addToCartAction(product)">Buy</button>
             </td>
           </tr>
         </table>
@@ -25,25 +25,21 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-import Cart from "@/views/cart";
+import Cart from "@/components/cart";
 
 export default {
   name: "Products",
   components: {
     Cart
   },
-  mounted() {
-    this.getProducts();
+  created() {
+    this.getProductsAction();
   },
   computed: {
     ...mapState(["products"])
   },
   methods: {
-    ...mapActions(["getProducts"]),
-
-    addToCart(product) {
-      this.$store.commit("addToCart", product);
-    }
+    ...mapActions(["getProductsAction", "addToCartAction"])
   }
 };
 </script>
