@@ -11,8 +11,7 @@
         <td>{{ v.name }}</td>
         <td>{{ v.description }}</td>
         <td>
-          <!-- Add router-link Here -->
-          
+          <router-link :to="{ name: 'orders', params: { id: v.id }}">View Orders</router-link>
         </td>
       </tr>
     </table>
