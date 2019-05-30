@@ -1364,7 +1364,7 @@ Run `npm install` to install the project dependencies.
 Let's now look at what the `vue add vuex` command did to the project. Open the `src` folder and notice that a `store.js` file has been added. It does the following:
 
 * Tells Vue to use Vuex by calling `Vue.use(Vuex)`
-* Creates a new `Vuex.Store` object with `state`, `mutations`, `actions`, and `getters` properties.
+* Creates a new `Vuex.Store` object with `state`, `mutations`, and `actions`.
 
 <course-item
   type="Note"
@@ -1431,7 +1431,7 @@ clearCart(state) {
 
 #### Step 9
 
-The Vuex state stores products that will be retrieved from the server. To handle retrieving the products using `fetch`, add the following code into the actions property.
+The Vuex state stores products that will be retrieved from the server. To handle retrieving the products using `fetch`, add the following code into the `actions` property.
 
 ```javascript
 getProducts({ state, commit }) {
@@ -1454,22 +1454,30 @@ getProducts({ state, commit }) {
 <course-item
   type="Note"
   title="">
-Note that Axios or another library could be used to make the HTTP call as well.
+Note that Axios or another library could be used to make the HTTP call as well as shown in the HTTP lab.
 </course-item>
 
 #### Step 10
 
-Your work in `store.js` is almost done! To finish things up, add the following code into the `getters` property to create a custom `cartTotal` property that can return the shopping cart's total cost.
+Your work in `store.js` is almost done! To finish things up, add a `getters` property into the `Vuex.Store` object to create a custom `cartTotal` property. This property will return the shopping cart's total cost. 
 
 ```javascript
-cartTotal: ({ cart }) => {
-  let total = 0;
-  for (let item of cart) {
-    total += item.price * item.quantity;
+getters: {
+  cartTotal: ({ cart }) => {
+    let total = 0;
+    for (let item of cart) {
+      total += item.price * item.quantity;
+    }
+    return total;
   }
-  return total;
 }
 ```
+
+<course-item
+  type="Note"
+  title="">
+Note that Axios or another library could be used to Don't forget to add a comma after the last `actions` property bracket.
+</course-item>
 
 #### Step 11
 
@@ -1486,7 +1494,7 @@ In this exercise you'll add functionality into components to handle storing and 
 Open `src/views/products.vue` in your editor and take a moment to note the following:
 
 * Examine the HTML code in the template. Notice that it renders products as well as a `Cart` component.
-* Notice that Vuex functionality is imported in the `scripts` section. The `mapState` and `mapActions` functions will be used to access store state and call into the store's actions.
+* Notice that Vuex functionality is imported in the `scripts` section. The `mapState` and `mapActions` functions will be used to access Vuex store state and call into the store's actions.
 
 #### Step 2
 
@@ -1542,7 +1550,7 @@ Add the following code into the `methods` property of the component.
 <course-item
   type="Note"
   title="">
-This code allows the `removeFromCart()` and `clearCart()` functions defined in the store's mutations property to be used by the `Cart` component. The `removeFromCart()` function is called when a button in the template is clicked. The `clearCart()` function isn't currently used, but could easily be implmented.
+This code allows the `removeFromCart()` and `clearCart()` functions defined in the store's mutations property to be used by the `Cart` component. The `removeFromCart()` function is called when a button in the template is clicked. The `clearCart()` function isn't currently used, but could easily be implemented.
 </course-item>
 
 #### Step 7
