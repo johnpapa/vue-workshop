@@ -24,6 +24,8 @@
           <td>&nbsp;</td>
         </tr>
       </table>
+      <br />
+      <router-link to="/purchased">Place Order</router-link>
     </div>
     <div v-if="!cart.length">Cart is empty</div>
   </div>
