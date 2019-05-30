@@ -1589,9 +1589,7 @@ Locate the `scripts` section and note how it uses `mapState()` and `mapGetters()
 Add the following code into the `methods` property of the component.
 
 ```javascript
-...mapMutations([
-    'removeFromCart',
-    'clearCart'])
+...mapMutations(['removeFromCart', 'clearCart'])
 ```
 
 <course-item
