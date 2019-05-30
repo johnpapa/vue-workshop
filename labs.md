@@ -1143,7 +1143,7 @@ When you are prompted to use history mode, type `y` and press `ENTER`.
 
 #### Step 3
 
-Notice that the Vue CLi tells you that several files have been updated. The `router.js` file now contains all of your routing/navigation logic and tells Vue to use the router. The `App.vue` file now contains a place for the routes to show their views (the `<router-view>`).
+Notice that the Vue CLI tells you that several files have been updated. The `router.js` file now contains all of your routing/navigation logic and tells Vue to use the router. The `App.vue` file now contains a place for the routes to show their views (the `<router-view>`).
 
 ```command-line
 The following files have been updated / added:
