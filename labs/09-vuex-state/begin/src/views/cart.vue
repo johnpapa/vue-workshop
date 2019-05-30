@@ -16,7 +16,7 @@
           <td>{{ item.quantity }}</td>
           <td>{{ '$' + item.total.toFixed(2) }}</td>
           <td>
-            <button @click="removeFromCart(item)">X</button>
+            <button @click="removeFromCartAction(item)">X</button>
           </td>
         </tr>
         <tr class="cartTotalRow">
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations } from "vuex";
+import { mapState, mapGetters, mapActions } from "vuex";
 
 export default {
   name: "Cart",

@@ -13,7 +13,7 @@
             <td>{{ product.name }}</td>
             <td>{{ '$' + product.price.toFixed(2) }}</td>
             <td class="buy">
-              <button @click="addToCart(product)">Buy</button>
+              <button @click="addToCartAction(product)">Buy</button>
             </td>
           </tr>
         </table>
@@ -33,7 +33,7 @@ export default {
     Cart
   },
   created() {
-    this.getProducts();
+    this.getProductsAction();
   },
   computed: {},
   methods: {}
