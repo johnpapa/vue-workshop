@@ -1401,7 +1401,7 @@ Let's now look at what the `vue add vuex` command did to the project. Open the `
 
 *   Tells Vue to use Vuex by calling `Vue.use(Vuex)`
 
-*   Creates a new `Vuex.Store` object with `state`, `mutations`, `and actions` properties.
+*   Creates a new `Vuex.Store` object with `state`, `mutations`, and `actions` properties.
 
 
 <course-item
@@ -1437,7 +1437,7 @@ products: []
 
 #### Step 8
 
-Copy and paste the following code into the `mutations` property in `Vuex.Store` to provide add, remove, and clear functionality to the store.
+Copy and paste the following code into the `mutations` property in `Vuex.Store` to provide add, remove, and clear functionality to the store. Mutations are what mutates (changes) the state in the store.
 
 ```javascript
 addProduct({ products }, product) {
@@ -1456,18 +1456,20 @@ addToCart({ cart }, product) {
 removeFromCart({ cart }, item) {
   const itemIndex = cart.findIndex(cartItem => cartItem.id === item.id);
   cart.splice(itemIndex, 1);
-},
-clearCart(state) {
-  state.cart = [];
 }
 ```
 
 #### Step 9
 
-The Vuex state stores products that will be retrieved from the server. To handle retrieving the products using `fetch`, add the following code into the `actions` property.
+We won;t be calling mutations directly, because we do not want to mutate the store from a component. Instead we want to fire an action that will decide what should happen to the state. The actions may call 0 or many mutations.
+
+Copy the following code into the `actions` property. This will create three actions which we will call to add to the cart, get the products, and remove an item from the cart.
 
 ```javascript
-getProducts({ state, commit }) {
+addToCartAction({ commit }, product) {
+  commit('addToCart', product);
+},
+getProductsAction({ state, commit }) {
   if (!state.products.length) {
     fetch(URL)
       .then(res => res.json())
@@ -1481,8 +1483,25 @@ getProducts({ state, commit }) {
         }
       });
   }
+},
+removeFromCartAction({ commit }, item) {
+  commit('removeFromCart', item);
 }
 ```
+
+<course-item
+  type="Note"
+  title="">
+  Note that we suffix each action with the word "Action" to make sure there are no naming conflicts with mutations that may have the same name.
+
+</course-item>
+
+<course-item
+  type="Note"
+  title="">
+  Note that the action function calls can use destructuring to access `commit` and `state` objects. The `commit` object lets the action commit a mutation. The `state` object gives the action access to the state.
+
+</course-item>
 
 <course-item
   type="Note"
@@ -1545,17 +1564,13 @@ Open `src/views/products.vue` in your editor and take a moment to note the follo
 Add the following code into the `methods` property:
 
 ```javascript
-...mapActions(['getProducts']),
-
-addToCart(product) {
-  this.$store.commit('addToCart', product);
-}
+...mapActions(["getProductsAction", "addToCartAction"])
 ```
 
 <course-item
   type="Note"
   title="">
-  The `mapActions` code makes the `getProducts` action in the Vuex store accessible to the component. The `addToCart()` function handles adding a product into the store's state by using its `commit()` function.
+  The `mapActions` code makes the `getProductsAction` and `addToCartAction` actions in the Vuex store accessible to the component.
 
 </course-item>
 
@@ -1589,13 +1604,13 @@ Locate the `scripts` section and note how it uses `mapState()` and `mapGetters()
 Add the following code into the `methods` property of the component.
 
 ```javascript
-...mapMutations(['removeFromCart', 'clearCart'])
+...mapActions(['removeFromCartAction'])
 ```
 
 <course-item
   type="Note"
   title="">
-  This code allows the `removeFromCart()` and `clearCart()` functions defined in the store's mutations property to be used by the `Cart` component. The `removeFromCart()` function is called when a button in the template is clicked. The `clearCart()` function isn't currently used, but could easily be implemented.
+  This code allows the `removeFromCartAction()` function defined in the store's actions property to be used by the `Cart` component. The `removeFromCartAction()` function is called when a button in the template is clicked.
 
 </course-item>
 
