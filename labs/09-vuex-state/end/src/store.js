@@ -39,11 +39,7 @@ export default new Vuex.Store({
           .then(res => res.json())
           .then(products => {
             for (let product of products) {
-              commit('addProduct', {
-                id: product.id,
-                name: product.name,
-                price: product.price
-              });
+              commit('addProduct', ({ id, name, price } = product));
             }
           });
       }
