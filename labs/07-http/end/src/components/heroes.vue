@@ -37,6 +37,7 @@
 
 <script>
 import HeroDetail from "@/components/hero-detail";
+import getHeroes from "@/heroes";
 
 export default {
   name: "Heroes",
@@ -63,7 +64,7 @@ export default {
       this.selectedHero = hero;
     },
     async getHeroes() {
-      
+      return await getHeroes();
     },
     saveHero(hero) {
       this.selectedHero = undefined;
