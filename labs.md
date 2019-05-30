@@ -1378,22 +1378,21 @@ In this exercise you'll add Vuex to your app and create your data store.
 
 #### Step 1
 
-Open `labs/vuex-state/begin` in your editor.
+Open `labs/09-vuex-state/begin` in your editor.
 
 
 #### Step 2
 
-Open a terminal window in the root of the project and run `vue add vuex`. This adds Vuex to your dependencies and includes it in your app.
-
+Run `npm install` to install the project dependencies.
 
 #### Step 3
 
-Open `package.json` and notice that a new dependency has been added for `vuex`.
+Open a terminal window in the root of the project and run `vue add vuex`. This adds Vuex to your dependencies and includes it in your app. Notice your terminal displays what files were modified by this command to ad Vuex.
 
 
 #### Step 4
 
-Run `npm install` to install the project dependencies.
+Open `package.json` and notice that a new dependency has been added for `vuex`.
 
 
 #### Step 5
@@ -1402,7 +1401,7 @@ Let's now look at what the `vue add vuex` command did to the project. Open the `
 
 *   Tells Vue to use Vuex by calling `Vue.use(Vuex)`
 
-*   Creates a new `Vuex.Store` object with `state`, `mutations`, `actions`, and `getters` properties.
+*   Creates a new `Vuex.Store` object with `state`, `mutations`, `and actions` properties.
 
 
 <course-item
@@ -1494,7 +1493,7 @@ getProducts({ state, commit }) {
 
 #### Step 10
 
-Your work in `store.js` is almost done! To finish things up, add a `getters` property into the `Vuex.Store` object to create a custom `cartTotal` property. This property will return the shopping cart's total cost.
+Your work in `store.js` is almost done! To finish things up, add a `getters` property into the `Vuex.Store` object at the same level as the `actions`, `mutations`, and `state`. Then create a custom `cartTotal` property in the `getters` property. This property will return the shopping cart's total cost.
 
 ```javascript
 getters: {
@@ -1519,6 +1518,10 @@ getters: {
 
 Save `store.js` before continuing.
 
+
+#### Step 12
+
+Run the command `npm run build` from your terminal to build your app. This will verify that you have no errors before continuing to the next exercise.
 
 
 ### Exercise 2: Using the Vuex Store in Components
