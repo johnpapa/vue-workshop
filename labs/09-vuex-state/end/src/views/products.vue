@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <div class="products">
-        <h2>Products</h2>
+        <h2>Villain Products</h2>
         <table class="products">
           <tr>
             <th>Name</th>
