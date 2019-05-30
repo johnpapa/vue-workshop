@@ -1341,8 +1341,6 @@ This lab will walk you through using `Vuex` to handle state management in a Vue.
 
 
 
-
-
 #### Step 1
 
 Open `labs/vuex-state/begin` in your editor.
