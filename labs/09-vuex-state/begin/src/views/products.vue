@@ -25,7 +25,7 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-import Cart from "@/views/cart";
+import Cart from "@/components/cart";
 
 export default {
   name: "Products",

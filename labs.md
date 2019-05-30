@@ -1591,7 +1591,7 @@ Add the following code into the component's `computed` property.
 
 #### Step 4
 
-Open `src/views/cart.vue` in your editor. Notice that the component's template handles rendering cart items.
+Open `src/components/cart.vue` in your editor. Notice that the component's template handles rendering cart items.
 
 
 #### Step 5
