@@ -32,7 +32,7 @@ export default {
   components: {
     Cart
   },
-  mounted() {
+  created() {
     this.getProducts();
   },
   computed: {},
