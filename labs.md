@@ -1,15 +1,13 @@
 ---
 
 courseType: code
-published: false
-public: false
+published: true
+public: true
 categories: javascript, html, css, vue
 
 ---
 
 # Course: Vue Fundamentals Workshop
-
-Authors: Dan Wahlin, John Papa
 
 In these workshop labs you'll learn about various Vue concepts that can be applied as you design and architect applications.
 
@@ -1137,29 +1135,40 @@ Stop the server by pressing `ctrl+c`. This lab is complete.
 
 This lab will walk you through using the `axios` library to make HTTP calls to the server to retrieve data.
 
+
+
+
 ### Exercise 1: Installing and Using Axios
 
 In this exercise you'll use `npm` to install the axios library. You'll then use axios to make a GET request to the server to retrieve heroes that can be used in a component.
+
+
+
 
 #### Step 1
 
 Open `labs/07-http/begin` in your editor.
 
+
 #### Step 2
 
 Open a terminal window and run `npm install` to install the project dependencies.
+
 
 #### Step 3
 
 Now run `npm install axios` in the terminal to install the `axios` library.
 
+
 #### Step 4
 
 Open `package.json` in your editor and you should notice that `axios` is now listed in the dependencies.
 
+
 #### Step 5
 
 Create a new file named `heroes.js` in the `src` folder of the project.
+
 
 #### Step 6
 
@@ -1171,7 +1180,7 @@ import axios from "axios";
 
 #### Step 7
 
-Add the following constant to define the URL that will be called to retrieve data. 
+Add the following constant to define the URL that will be called to retrieve data.
 
 ```javascript
 const URL = "http://localhost:8080/heroes.json";
@@ -1180,7 +1189,8 @@ const URL = "http://localhost:8080/heroes.json";
 <course-item
   type="Note"
   title="">
-The `heroes.json` file is located in the `public` folder of the project.
+  The `heroes.json` file is located in the `public` folder of the project.
+
 </course-item>
 
 #### Step 8
@@ -1209,17 +1219,23 @@ return axios
 Save `heroes.js` and continue to the next exercise.
 
 
+
 ### Exercise 2: Retrieving Heroes in a Component
 
 In this exercise you'll consume the `heroes.js` function created in the previous exercise in a component and use it to retrieve heroes.
+
+
+
 
 #### Step 1
 
 Open `src/components/heroes.vue` in the editor.
 
+
 #### Step 2
 
 Take a moment to explore the HTML code located in the template as well as the script section. Notice that the template handles looping through heroes and displaying them as cards. The code handles loading heroes and performing other functionality.
+
 
 #### Step 3
 
@@ -1255,9 +1271,12 @@ Browse to [http://localhost:8080](http://localhost:8080) and you should see hero
 Stop the server by pressing `ctrl+c`. This lab is complete.
 
 
+
 ## Lab 8: 8 - Routing
 
 This lab will walk you through routing and how it can be used to load and display different components. You'll learn how to define routes, work with the `router-view` directive, and link to routes using `router-link`.
+
+
 
 
 ### Exercise 1: Defining Routes
@@ -1498,6 +1517,7 @@ Open `labs/09-vuex-state/begin` in your editor.
 
 Run `npm install` to install the project dependencies.
 
+
 #### Step 3
 
 Open a terminal window in the root of the project and run `vue add vuex`. This adds Vuex to your dependencies and includes it in your app. Notice your terminal displays what files were modified by this command to ad Vuex.
@@ -1656,6 +1676,7 @@ Save `store.js` before continuing.
 Run the command `npm run build` from your terminal to build your app. This will verify that you have no errors before continuing to the next exercise.
 
 
+
 ### Exercise 2: Using the Vuex Store in Components
 
 In this exercise you'll add functionality into components to handle storing and retrieving state from the Vuex store.
@@ -1742,18 +1763,12 @@ npm run serve
 
 #### Step 9
 
-Browse to [http://localhost:8080](http://localhost:8080).
-
 Click on the `Products` item in the menu. Notice that products are displayed but that the cart is empty. Click on the `Buy` button next to a product and it should be added into the cart. You can click on a product multiple times to increase the quantity purchased. Cart items can be removed by clicking the `X` button next to the item.
 
 
 #### Step 10
 
 Congratulations! You've successfully implemented a Vuex store!
-
-#### Step 11
-
-Stop the server by pressing `ctrl+c`. This lab is complete.
 
 
 
