@@ -9,6 +9,8 @@ categories: javascript, html, css, vue
 
 # Course: Vue Fundamentals Workshop
 
+Authors: Dan Wahlin, John Papa
+
 In these workshop labs you'll learn about various Vue concepts that can be applied as you design and architect applications.
 
 Topics covered include:
@@ -1763,12 +1765,19 @@ npm run serve
 
 #### Step 9
 
+Browse to [http://localhost:8080](http://localhost:8080).
+
 Click on the `Products` item in the menu. Notice that products are displayed but that the cart is empty. Click on the `Buy` button next to a product and it should be added into the cart. You can click on a product multiple times to increase the quantity purchased. Cart items can be removed by clicking the `X` button next to the item.
 
 
 #### Step 10
 
 Congratulations! You've successfully implemented a Vuex store!
+
+
+#### Step 11
+
+Stop the server by pressing `ctrl+c`. This lab is complete.
 
 
 
