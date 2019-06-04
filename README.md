@@ -16,7 +16,7 @@ This repository contains labs and demos for the Vue Fundamentals workshop.
 
 1. Install the [Vue Snippets extension](https://marketplace.visualstudio.com/items?itemName=sdras.vue-vscode-snippets&WT.mc_id=vueworkshop-github-jopapa)
 
-1. Install the [Vue devtools for Chrome](https://jpapa.me/vuedevtools)
+1. Install the [Vue dev tools for Chrome](https://jpapa.me/vuedevtools)
 
 1. Install the [Redux dev tools for Chrome](http://jpapa.me/reduxext)
 
