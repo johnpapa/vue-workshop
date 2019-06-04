@@ -43,10 +43,10 @@
 export default {
   name: "HeroDetail",
   props: {
-    hero: {
-      type: Object,
-      default: () => {}
-    }
+    // hero: {
+    //   type: Object,
+    //   default: () => {}
+    // }
   },
 data() {
   return {
