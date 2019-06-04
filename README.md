@@ -27,3 +27,13 @@ This repository contains labs and demos for the Vue Fundamentals workshop.
 1. Run `npm run serve` to start the server
 
 1. Browse to the app at <http://localhost:8080>
+
+## Help
+
+If you have problems running npm locally or just want to run in the browser, you can open any of the labs in CodeSandbox.io.
+
+Replace the lab and either the `begin` or `end` folder to the example url below.
+
+<https://codesandbox.io/s/github/johnpapa/vue-workshop/tree/master/labs/03-data-binding/end>
+
+This link will open the end state of the 3rd lab.
