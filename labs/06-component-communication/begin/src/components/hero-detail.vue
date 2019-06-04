@@ -25,11 +25,11 @@
         </div>
       </div>
       <footer class="card-footer">
-        <button class="link card-footer-item cancel-button" @click="cancelHero()">
+        <button class="link card-footer-item cancel-button" >
           <i class="fas fa-undo"></i>
           <span>Cancel</span>
         </button>
-        <button class="link card-footer-item save-button" @click="saveHero()">
+        <button class="link card-footer-item save-button" >
           <i class="fas fa-save"></i>
           <span>Save</span>
         </button>
@@ -59,10 +59,10 @@ data() {
   },
   methods: {
     cancelHero() {
-      // this.$emit("cancel");
+
     },
     saveHero() {
-      // this.$emit("save", this.clonedHero);
+
     }
   }
 };
