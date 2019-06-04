@@ -23,13 +23,7 @@
               </div>
             </li>
           </ul>
-          <!-- <HeroDetail
-            :hero="selectedHero"
-            @save="saveHero"
-            @cancel="unselectHero"
-            v-if="selectedHero"
-          />-->
-          <HeroDetail :hero="selectedHero" v-if="selectedHero"/>
+          
           <div class="notification is-info" v-show="message">{{message}}</div>
         </div>
       </div>
@@ -38,8 +32,6 @@
 </template>
 
 <script>
-import HeroDetail from "@/components/hero-detail";
-
 export default {
   name: "Heroes",
   data() {
@@ -49,7 +41,7 @@ export default {
     };
   },
   components: {
-    HeroDetail
+
   },
   created() {
     this.loadHeroes();

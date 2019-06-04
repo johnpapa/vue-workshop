@@ -44,13 +44,10 @@ export default {
   name: "HeroDetail",
   props: {
     // hero: {
-    //   type: Object,
-    //   default: () => {}
     // }
   },
 data() {
   return {
-    clonedHero: { ...this.hero },
     // clonedHero: {  },
     message: ""
   };
