@@ -69,8 +69,8 @@ export default {
       this.hero = await this.getHero();
       this.message = "";
     },
-    saveHero() {
-      this.$emit("save", this.clonedHero);
+    async saveHero() {
+
     }
   }
 };
