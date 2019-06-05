@@ -1,42 +1,34 @@
 ---
 
 courseType: code
+categories: javascript, html, css, vue
 published: true
 public: true
-categories: javascript, html, css, vue
+showLabNumbers: true
+showExerciseNumbers: true
 
 ---
 
 # Course: Vue Fundamentals Workshop
-
-Authors: Dan Wahlin, John Papa
 
 In these workshop labs you'll learn about various Vue concepts that can be applied as you design and architect applications.
 
 Topics covered include:
 
 *   Tooling and setup
-
 *   Getting Started with Vue and the CLI
-
 *   Displaying Data and Responding to Events
-
 *   Displaying Lists and Conditional Content
-
 *   Interacting within a Component
-
 *   Component Communication
-
 *   Accessing Data
-
 *   Routing
-
 *   Managing State with Vuex
 
 
 
 
-## Lab 1: 1 - Your First Vue App
+## Lab 1: Your First Vue App
 
 This lab will walk you through creating your first Vue app.
 
@@ -52,7 +44,7 @@ In this exercise you'll create your first Vue app
 
 #### Step 1
 
-Run the following command to make sure the tools are working correctly. This will use the Vue CLI to create a new project which will verify everything is working correctly.
+Create a folder and `cd` into it.
 
 
 #### Step 2
@@ -63,6 +55,7 @@ Create a file named `index.html` and open it your editor (such as VS Code)
 #### Step 3
 
 Add the following HTML to your file
+
 
 ```html
 <html>
@@ -77,6 +70,7 @@ Add the following HTML to your file
 
 Add a script tag in the `<head>` pointing to Vue in [https://cdn.jsdelivr.net/npm/vue](https://cdn.jsdelivr.net/npm/vue)
 
+
 ```html
 <head>
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -86,6 +80,7 @@ Add a script tag in the `<head>` pointing to Vue in [https://cdn.jsdelivr.net/np
 #### Step 5
 
 Create the following HTML to capture user input. Put it inside the `<body>`.
+
 
 ```html
 <body>
@@ -106,6 +101,7 @@ Create the following HTML to capture user input. Put it inside the `<body>`.
 
 Create a new script tag below the div, and inside the body. Create an instance of Vue and point it to the div we just created, by it's id.
 
+
 ```javascript
 new Vue({
     el: '#app'
@@ -122,6 +118,7 @@ new Vue({
 #### Step 7
 
 Create a `data` property in the Vue instance. Set it equal to a function that returns an object. The object should have a `name` property set to your name.
+
 
 ```javascript
 new Vue({
@@ -143,6 +140,7 @@ new Vue({
 
 Add this code `v-model="name"` inside of your `<input>`. Your code should look like the following code example. This binds the `name` model from our Vue instance to the input control.
 
+
 ```html
 <div id="app">
   <input type="text" v-model="name" />
@@ -153,6 +151,7 @@ Add this code `v-model="name"` inside of your `<input>`. Your code should look l
 
 Add the following code below your `<input>` and inside of the `<div>`. This will display the `name` model.
 
+
 ```html
 Hello {{ name }}
 ```
@@ -160,6 +159,7 @@ Hello {{ name }}
 #### Step 10
 
 Verify your code looks like the following example.
+
 
 ```html
 <html>
@@ -191,7 +191,7 @@ Your name should be displayed in your app. Type a new value and your should see 
 
 
 
-## Lab 2: 2 - Hello World! - The Vue CLI
+## Lab 2: Hello World! - The Vue CLI
 
 This lab will walk you through getting the required tools and creating your first app with the Vue CLI
 
@@ -231,6 +231,7 @@ Install the [Vue Snippets](https://marketplace.visualstudio.com/items?itemName=s
 
 Check that you have Node.js installed by running the following command. If you don't have it on your machine install it from [https://nodejs.org](https://nodejs.org).
 
+
 ```command line
 node --version
 ```
@@ -246,6 +247,7 @@ node --version
 
 Install the Vue CLI if you don't already have it by running the following command:
 
+
 ```command line
 npm install -g @vue/cli
 ```
@@ -253,6 +255,7 @@ npm install -g @vue/cli
 #### Step 6
 
 Verify the **Vue CLI** installation by running the following command:
+
 
 ```command line
 vue --version
@@ -266,6 +269,7 @@ Install the Vue developer tools for Chrome from here [https://github.com/vuejs/v
 #### Step 8
 
 Clone the GitHub repository with the lab code [https://github.com/johnpapa/vue-workshop](https://github.com/johnpapa/vue-workshop)
+
 
 ```command-line
 git clone git@github.com:johnpapa/vue-workshop.git
@@ -283,6 +287,7 @@ In this exercise you'll create and serve a Vue app with the Vue CLI
 
 Run the following command to use the Vue CLI to create a new project.
 
+
 ```command line
 vue create hello-world -d
 ```
@@ -298,6 +303,7 @@ vue create hello-world -d
 
 Run the following command to serve your app
 
+
 ```command line
 npm run serve
 ```
@@ -308,7 +314,7 @@ Browse to [http://localhost:8080](http://localhost:8080) to see your app running
 
 
 
-## Lab 3: 3 - Display Data and Handling Events
+## Lab 3: Display Data and Handling Events
 
 This lab will walk you through creating a Heroes component and display data, changing data, and handling user input events.
 
@@ -327,6 +333,7 @@ In this exercise you'll display and change model values in the component.
 Download the Vue Workshop code (download the .zip or do a git clone) from the following URL if you haven't already:
 
 [https://github.com/johnpapa/vue-workshop](https://github.com/johnpapa/vue-workshop)
+
 
 ```command line
 git clone git@github.com:johnpapa/vue-workshop.git
@@ -351,6 +358,7 @@ Open the _Heroes_ view in `src/components/heroes.vue`
 
 Create a hero model in the `data()` function in the component's code. Give the hero properties with values for id, name and description.
 
+
 ```javascript
 data() {
   return {
@@ -367,6 +375,7 @@ data() {
 
 Create a `<p>` tag below the `<h2>`, and say hello to your hero. Then display the id and description of the hero as shown below.
 
+
 ```html
 <p>Hello {{ hero.name }}.</p>
 <p>Your id is {{ hero.id }} and your description is "{{ hero.description }}"</p>
@@ -375,6 +384,7 @@ Create a `<p>` tag below the `<h2>`, and say hello to your hero. Then display th
 #### Step 7
 
 Create an `<input>` element of type "text" above the `<p>` tags you just created. Bind your hero's name to the input element using 2-way data-binding.
+
 
 ```html
 <input v-model="hero.name" type="text">
@@ -407,6 +417,7 @@ Open the _Heroes_ view in `src/components/heroes.vue`
 
 Create a method in the component's code named `reverseName()`. Make the code reverse your hero's name.
 
+
 ```javascript
 methods: {
   reverseName() {
@@ -418,6 +429,7 @@ methods: {
 #### Step 4
 
 Create a button inside your template. When you click the button make it call the function you just created. This should reverse the name of your hero.
+
 
 ```html
 <button @click="reverseName()">Reverse</button>
@@ -445,6 +457,7 @@ Open the _Heroes_ view in `src/components/heroes.vue`
 
 Create a method in the component's code named `upperCaseTheName()`. Make the code change your hero's name to all uppercase letters.
 
+
 ```javascript
 methods: {
   reverseName() {
@@ -460,12 +473,13 @@ methods: {
 
 When the user presses the ENTER key inside of your input element, your hero's name should become all uppercase. Add the modifier to your input element and have it call your new function.
 
+
 ```html
 <input v-model="hero.name" type="text" @keyup.enter="upperCaseTheName()">
 ```
 
 
-## Lab 4: 4 - Lists and Conditionals
+## Lab 4: Lists and Conditionals
 
 This lab will walk you through adding a list of heroes and showing/hiding content as appropriate.
 
@@ -484,6 +498,7 @@ This exercise will walk you through displaying a list of heroes.
 Download the Vue Workshop code (download the .zip or do a git clone) from the following URL if you haven't already:
 
 [https://github.com/johnpapa/vue-workshop](https://github.com/johnpapa/vue-workshop)
+
 
 ```command line
 git clone git@github.com:johnpapa/vue-workshop.git
@@ -507,6 +522,7 @@ Open the _Heroes_ view in `src/components/heroes.vue`
 #### Step 5
 
 Create an array of heroes in the `data()` function with at least three heroes. Each hero should have an id and a name property.
+
 
 ```javascript
 data() {
@@ -533,6 +549,7 @@ Display each hero's name in the list item `<li>`.
 #### Step 8
 
 Set the key to be the id property of each hero. Your code should now look like the following in your template.
+
 
 ```html
 <ul>
@@ -569,6 +586,7 @@ Open the _Heroes_ view in `src/components/heroes.vue`
 
 Create a `selectedHero` model in the `data()` function of your component's code. This will store the hero that the user selects. Set it to `undefined` by default.
 
+
 ```javascript
 data() {
   return {
@@ -585,6 +603,7 @@ data() {
 #### Step 3
 
 When the user clicks on a hero item in the template, call a new function named `selectHero`. Add the `selectHero` function to your component code in the `methods` section. Pass the hero to the new function and set the `selectedHero` model to the hero that the user selected. Your method should look like the following code
+
 
 ```javascript
 methods: {
@@ -607,6 +626,7 @@ Add a binding to the `class` of the list item in your template such that the `hi
 #### Step 6
 
 Verify that your template for the list looks like the following:
+
 
 ```html
 <ul>
@@ -658,12 +678,13 @@ Run the example with `npm run serve` and open it in your browser. You should see
 
 Your template should now contain a div that looks like this:
 
+
 ```html
 <div v-if="selectedHero">You selected {{ selectedHero.name }}</div>
 ```
 
 
-## Lab 5: 5 - Interacting within a Component
+## Lab 5: Interacting within a Component
 
 This lab will walk you through using lifecycle hooks, using computed properties, and engaging with watchers.
 
@@ -701,6 +722,7 @@ Add the `created` lifecycle hook in the component. This hook is called when the 
   type="Hint"
   title="Need Help?">
   The `created` hook should be at the same level as the `data()` function.
+
 
 ```javascript
 data() {
@@ -749,6 +771,7 @@ Create a computed property named `fullName` in the `computed` section of the com
   title="Need Help?">
   The `computed` section should be at the same level as the `data()` function. See the following code to see what your computed might look like.
 
+
 ```javascript
 data() {
   return {
@@ -774,6 +797,7 @@ Now find the HTML in your template that displays "TITLE" in the header. Replace 
   type="Hint"
   title="Need Help?">
   TITLE was hard coded. But we need to use interpolation to render the `fullName` computed property. When complete, your code will look like the following:
+
 
 ```html
 <header class="card-header">
@@ -815,6 +839,7 @@ Create a watcher property that watches the `hero.capeCounter` in the `watch` sec
   title="Need Help?">
   The `computed` section should be at the same level as the `data()` function. See the following code to see what your computed might look like.
 
+
 ```javascript
 data() {
   return {
@@ -850,6 +875,7 @@ Make the watcher trigger the callback immediately with the current value of the 
   title="Need Help?">
   The `computed` section should be at the same level as the `data()` function. See the following code to see what your computed might look like.
 
+
 ```javascript
 watch: {
   "hero.capeCounter": {
@@ -873,7 +899,7 @@ Stop the server by pressing `ctrl+c`. This lab is complete.
 
 
 
-## Lab 6: 6 - Component Communication
+## Lab 6: Component Communication
 
 This lab will walk you through how to communicate between a parent (Heroes) and child (HeroDetail) component. You will learn to use props to pass values from parent to child. You will learn how to create custom events from the child that notify the parent component when something has occurred.
 
@@ -914,6 +940,7 @@ We want the `HeroDetail` component to accept a hero as input from a parent compo
   title="Need Help?">
   The `props` section should be at the same level as the `data()` function. See the following code to see what your props might look like.
 
+
 ```javascript
 export default {
   name: "HeroDetail",
@@ -938,6 +965,7 @@ Now clone the `hero` prop into the `clonedHero` model.
   title="Need Help?">
   You can use the spread operator to extract the `hero` prop's properties out, and then add them back to the `clonedHero`. See the following code to see what your `clonedHero` might look like.
 
+
 ```javascript
 data() {
   return {
@@ -959,6 +987,7 @@ You'll need to import the `HeroDetail` component from the `@/components/hero-det
   type="Hint"
   title="Need Help?">
   The `components` section should be at the same level as the `data()` function. See the following code to see what your code might look like.
+
 
 ```javascript
 import HeroDetail from "@/components/hero-detail";
@@ -987,6 +1016,7 @@ Now place the `HeroDetail` component in the template, just below the closing `</
   title="Need Help?">
   See the following code to see what your template might look like.
 
+
 ```html
 <HeroDetail :hero="selectedHero" v-if="selectedHero"/>
 ```
@@ -1001,6 +1031,7 @@ You just added a `v-if` to only show the `HeroDetail` component if a hero has be
   type="Hint"
   title="Need Help?">
   See the following code to see what your template might look like.
+
 
 ```html
 <ul v-if="!selectedHero">
@@ -1047,6 +1078,7 @@ When the user presses the save button, fire a custom event named `save` from the
   title="Need Help?">
   Use the `this.$emit()` function and pass the `clonedHero` as the second argument. Your code may look like the following.
 
+
 ```javascript
 methods: {
   cancelHero() {
@@ -1067,7 +1099,7 @@ Open the `Heroes` view in `src/components/heroes.vue`. Next we're going to liste
 
 When the user presses the cancel button in the `HeroDetail` component, we want to set the `Heroes` component's selected hero to `undefined` (de-selecting it).
 
-Create a method in the `Heroes` component named `unselectedHero` and have it unselected the selected hero.
+Create a method in the `Heroes` component named `unselectHero` and have it unselected the selected hero.
 
 
 #### Step 6
@@ -1080,6 +1112,7 @@ In the template of your `Heroes` component, bind the `HeroDetail`'s `cancel` eve
   title="Need Help?">
   Your code may look like the following.
 
+
 ```html
 <HeroDetail :hero="selectedHero" @cancel="unselectHero" v-if="selectedHero"/>
 ```
@@ -1090,6 +1123,7 @@ In the template of your `Heroes` component, bind the `HeroDetail`'s `cancel` eve
 When the user presses the save button in the `HeroDetail` component, we want to set the `Heroes` component's selected hero to `undefined` (de-selecting it) and replace the hero with the updated values.
 
 Paste the following code that creates a method in the `Heroes` component named `saveHero`. Notice it unselects the `selectedHero`, first. Then it finds the hero that was just modified, replaces it in the array of heroes with the updated hero, and then clones the array to create a fresh list of heroes.
+
 
 ```javascript
 saveHero(hero) {
@@ -1109,6 +1143,7 @@ In the template of your `Heroes` component, bind the `HeroDetail`'s `save` event
   type="Hint"
   title="Need Help?">
   Your code may look like the following.
+
 
 ```html
 <HeroDetail
@@ -1133,7 +1168,7 @@ Stop the server by pressing `ctrl+c`. This lab is complete.
 
 
 
-## Lab 7: 7 - Accessing Data using HTTP
+## Lab 7: Accessing Data using HTTP
 
 This lab will walk you through using the `axios` library to make HTTP calls to the server to retrieve data.
 
@@ -1176,6 +1211,7 @@ Create a new file named `heroes.js` in the `src` folder of the project.
 
 Import `axios` into the top of the file.
 
+
 ```javascript
 import axios from "axios";
 ```
@@ -1183,6 +1219,7 @@ import axios from "axios";
 #### Step 7
 
 Add the following constant to define the URL that will be called to retrieve data.
+
 
 ```javascript
 const URL = "http://localhost:8080/heroes.json";
@@ -1199,6 +1236,7 @@ const URL = "http://localhost:8080/heroes.json";
 
 Create the following function to handle retrieving heroes from the server.
 
+
 ```javascript
 export default function getHeroes() {
 
@@ -1208,6 +1246,7 @@ export default function getHeroes() {
 #### Step 9
 
 Add the following code into the `getHeroes()` function to axios to make a GET request to the server.
+
 
 ```javascript
 return axios
@@ -1243,6 +1282,7 @@ Take a moment to explore the HTML code located in the template as well as the sc
 
 Add the following code to the top of the `scripts` code to import the `heroes.js` module.
 
+
 ```javascript
 import getHeroes from "@/heroes";
 ```
@@ -1251,6 +1291,7 @@ import getHeroes from "@/heroes";
 
 Add the following code into the existing `getHeroes()` function within the component code to handle calling the server to retrieve heroes using the `axios` library.
 
+
 ```javascript
 return await getHeroes();
 ```
@@ -1258,6 +1299,7 @@ return await getHeroes();
 #### Step 5
 
 Run the following command to start the server and run the application.
+
 
 ```console
 npm run serve
@@ -1274,7 +1316,7 @@ Stop the server by pressing `ctrl+c`. This lab is complete.
 
 
 
-## Lab 8: 8 - Routing
+## Lab 8: Routing
 
 This lab will walk you through routing and how it can be used to load and display different components. You'll learn how to define routes, work with the `router-view` directive, and link to routes using `router-link`.
 
@@ -1303,6 +1345,7 @@ When you are prompted to use history mode, type `y` and press `ENTER`.
 #### Step 3
 
 Notice that the Vue CLi tells you that several files have been updated. The `router.js` file now contains all of your routing/navigation logic and tells Vue to use the router. The `App.vue` file now contains a place for the routes to show their views (the `<router-view>`).
+
 
 ```command-line
 The following files have been updated / added:
@@ -1341,6 +1384,7 @@ Open `router.js`. Notice that `vue-router` along with the `About` and `Home` vie
 
 Open `router.js` and and import `villains-list.vue` and the `heroes-list.vue` at the top of the file.
 
+
 ```javascript
 import Vue from 'vue';
 import Router from 'vue-router';
@@ -1353,6 +1397,7 @@ Vue.use(Router);
 #### Step 7
 
 Go to the `router.js` file and look for the route definitions. Change the default path of `/` from home to villains. This `villains-list.vue` will load using eager loading because we specify the component explicitly.
+
 
 ```javascript
 routes: [
@@ -1367,6 +1412,7 @@ routes: [
 
 In `router.js`, look for the route definitions. Add a route definition such that `/heroes` displays the `heroes-list.vue`.
 
+
 ```javascript
 routes: [
   {
@@ -1380,6 +1426,7 @@ routes: [
 
 Go to the `router.js` file and look for the route definitions. Change the `/about` path from about to orders. Use the lazy loading syntax for orders.
 
+
 ```javascript
 {
   path: '/orders',
@@ -1392,6 +1439,7 @@ Go to the `router.js` file and look for the route definitions. Change the `/abou
 
 Go to the `router.js` file and look for the route definitions. Add a path at the end of the route definitions to catch all unknown routes, and send it to the not-found view. You will also want to import the `not-found.vue` file at the top of this file.
 
+
 ```javascript
 import NotFound from './views/not-found.vue';
 
@@ -1402,7 +1450,8 @@ import NotFound from './views/not-found.vue';
 
 #### Step 11
 
-Open `App.vue` and notice we have a `router-link` pointing to `/` for Home and `/about` for About. Update the Home route to point to say Villains.
+Open `App.vue` and notice we have a `router-link` pointing to `/` for Home and `/about` for About. Update the Home route to point to / and to display Villains.
+
 
 ```html
 <div id="nav">
@@ -1430,6 +1479,7 @@ In this exercise you'll use the `router-link` component to create a link to a ro
 
 Open `villains-list.vue`. Locate the `Add router-link Here` comment and replace it with the following code to link to the `orders-list.vue` and pass it the order ID.
 
+
 ```html
 <router-link :to="{ name: 'orders', params: { id: v.id }}">
   View Orders
@@ -1451,6 +1501,7 @@ Open `orders-list.vue`. Notice that the top of the template writes out the value
 #### Step 3
 
 Locate the `Add router-link Here` comment in the `orders-list.vue` template. Replace the comment with the following code to link back to the `villains-list.vue`.
+
 
 ```javascript
 <router-link :to="{ name: 'villains' }">View Villains</router-link>
@@ -1475,6 +1526,7 @@ The computed property function should accept a single parameter named `vm` and r
   title="Need Help?">
   The computed property function should look like the following:
 
+
 ```javascript
 villainId: vm => vm.$route.params.id;
 ```
@@ -1496,7 +1548,7 @@ Stop the server by pressing `ctrl+c`. This lab is complete.
 
 
 
-## Lab 9: 9 - Managing State
+## Lab 9: Managing State
 
 This lab will walk you through using `Vuex` to handle state management in a Vue.js application that will allow users to work with a shopping cart.
 
@@ -1550,6 +1602,7 @@ Let's now look at what the `vue add vuex` command did to the project. Open the `
 
 Add the following code **immediately above** the `export` statement in `store.js`. This URL will be used to retrieve products used in the application.
 
+
 ```javascript
 const URL = 'http://localhost:8080/products.json';
 ```
@@ -1557,6 +1610,7 @@ const URL = 'http://localhost:8080/products.json';
 #### Step 7
 
 Locate the `state` property in `Vuex.Store` and add the following code into it.
+
 
 ```javascript
 cart: [],
@@ -1573,6 +1627,7 @@ products: []
 #### Step 8
 
 Copy and paste the following code into the `mutations` property in `Vuex.Store` to provide add, remove, and clear functionality to the store. Mutations are what mutates (changes) the state in the store.
+
 
 ```javascript
 addProduct({ products }, product) {
@@ -1599,6 +1654,7 @@ removeFromCart({ cart }, item) {
 We won;t be calling mutations directly, because we do not want to mutate the store from a component. Instead we want to fire an action that will decide what should happen to the state. The actions may call 0 or many mutations.
 
 Copy the following code into the `actions` property. This will create three actions which we will call to add to the cart, get the products, and remove an item from the cart.
+
 
 ```javascript
 addToCartAction({ commit }, product) {
@@ -1648,6 +1704,7 @@ removeFromCartAction({ commit }, item) {
 #### Step 10
 
 Your work in `store.js` is almost done! To finish things up, add a `getters` property into the `Vuex.Store` object at the same level as the `actions`, `mutations`, and `state`. Then create a custom `cartTotal` property in the `getters` property. This property will return the shopping cart's total cost.
+
 
 ```javascript
 getters: {
@@ -1699,6 +1756,7 @@ Open `src/views/products.vue` in your editor and take a moment to note the follo
 
 Add the following code into the `methods` property:
 
+
 ```javascript
 ...mapActions(["getProductsAction", "addToCartAction"])
 ```
@@ -1713,6 +1771,7 @@ Add the following code into the `methods` property:
 #### Step 3
 
 Add the following code into the component's `computed` property.
+
 
 ```javascript
 ...mapState(['products'])
@@ -1739,6 +1798,7 @@ Locate the `scripts` section and note how it uses `mapState()` and `mapGetters()
 
 Add the following code into the `methods` property of the component.
 
+
 ```javascript
 ...mapActions(['removeFromCartAction'])
 ```
@@ -1758,6 +1818,7 @@ Save all of the files you've modified up to this point.
 #### Step 8
 
 Run the following command to start the server and run the application.
+
 
 ```console
 npm run serve
