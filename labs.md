@@ -16,21 +16,21 @@ In these workshop labs you'll learn about various Vue concepts that can be appli
 Topics covered include:
 
 *   Tooling and setup
-    
+
 *   Getting Started with Vue and the CLI
-    
+
 *   Displaying Data and Responding to Events
-    
+
 *   Displaying Lists and Conditional Content
-    
+
 *   Interacting within a Component
-    
+
 *   Component Communication
-    
+
 *   Accessing Data
-    
+
 *   Routing
-    
+
 *   Managing State with Vuex
 
 
@@ -97,7 +97,7 @@ Create the following HTML to capture user input. Put it inside the `<body>`.
   type="Note"
   title="">
   Notice the div's "id" is set to "app". We'll use this to let Vue know where our Vue app should be placed in the HTML page.
-  
+
 </course-item>
 
 #### Step 6
@@ -116,7 +116,7 @@ new Vue({
   type="Note"
   title="">
   The Vue instance is is now ready and knows where to put it's content on the page.
-  
+
 </course-item>
 
 #### Step 7
@@ -138,7 +138,7 @@ new Vue({
   type="Note"
   title="">
   The data property of the Vue instance exposes our data model.
-  
+
 </course-item>
 
 #### Step 8
@@ -220,7 +220,7 @@ Install the Vetur extension from the [VS Code marketplace](https://marketplace.v
   type="Note"
   title="">
   This extension adds additional code help for using Vue in VS Code
-  
+
 </course-item>
 
 #### Step 3
@@ -241,7 +241,7 @@ node --version
   type="Note"
   title="">
   We recommend installing the latest **LTS version** of Node.js for this workshop.
-  
+
 </course-item>
 
 #### Step 5
@@ -296,7 +296,7 @@ vue create hello-world -d
   type="Note"
   title="">
   The "-d" indicates you want to use all of the defaults for creating the Vue app.
-  
+
 </course-item>
 
 #### Step 2
@@ -551,8 +551,8 @@ In this exercise you will allow the user to select a hero from the list and high
 <course-item
   type="Hint"
   title="">
-  
-  
+
+
 </course-item>
 
 
@@ -687,7 +687,7 @@ Add the `created` lifecycle hook in the component. This hook is called when the 
   type="Hint"
   title="Need Help?">
   The `created` hook should be at the same level as the `data()` function.
-  
+
 
 ```javascript
 data() {
@@ -732,7 +732,7 @@ Create a computed property named `fullName` in the `computed` section of the com
   type="Hint"
   title="Need Help?">
   The `computed` section should be at the same level as the `data()` function. See the following code to see what your computed might look like.
-  
+
 
 ```javascript
 data() {
@@ -760,7 +760,7 @@ Now find the HTML in your template that displays "TITLE" in the header. Replace 
   type="Hint"
   title="Need Help?">
   TITLE was hard coded. But we need to use interpolation to render the `fullName` computed property. When complete, your code will look like the following:
-  
+
 
 ```html
 <header class="card-header">
@@ -798,7 +798,7 @@ Create a watcher property that watches the `hero.capeCounter` in the `watch` sec
   type="Hint"
   title="Need Help?">
   The `computed` section should be at the same level as the `data()` function. See the following code to see what your computed might look like.
-  
+
 
 ```javascript
 data() {
@@ -834,7 +834,7 @@ Make the watcher trigger the callback immediately with the current value of the 
   type="Hint"
   title="Need Help?">
   The `computed` section should be at the same level as the `data()` function. See the following code to see what your computed might look like.
-  
+
 
 ```javascript
 watch: {
@@ -893,7 +893,7 @@ We want the `HeroDetail` component to accept a hero as input from a parent compo
   type="Hint"
   title="Need Help?">
   The `props` section should be at the same level as the `data()` function. See the following code to see what your props might look like.
-  
+
 
 ```javascript
 export default {
@@ -919,7 +919,7 @@ Now clone the `hero` prop into the `clonedHero` model.
   type="Hint"
   title="Need Help?">
   You can use the spread operator to extract the `hero` prop's properties out, and then add them back to the `clonedHero`. See the following code to see what your `clonedHero` might look like.
-  
+
 
 ```javascript
 data() {
@@ -943,7 +943,7 @@ You'll need to import the `HeroDetail` component from the `@/components/hero-det
   type="Hint"
   title="Need Help?">
   The `components` section should be at the same level as the `data()` function. See the following code to see what your code might look like.
-  
+
 
 ```javascript
 import HeroDetail from "@/components/hero-detail";
@@ -972,7 +972,7 @@ Now place the `HeroDetail` component in the template, just below the closing `</
   type="Hint"
   title="Need Help?">
   See the following code to see what your template might look like.
-  
+
 
 ```html
 <HeroDetail :hero="selectedHero" v-if="selectedHero"/>
@@ -989,7 +989,7 @@ You just added a `v-if` to only show the `HeroDetail` component if a hero has be
   type="Hint"
   title="Need Help?">
   See the following code to see what your template might look like.
-  
+
 
 ```html
 <ul v-if="!selectedHero">
@@ -1021,7 +1021,7 @@ When the user presses the cancel button, fire a custom event named `cancel` from
   type="Hint"
   title="Need Help?">
   Use the `this.$emit()` function.
-  
+
 </course-item>
 
 #### Step 3
@@ -1033,7 +1033,7 @@ When the user presses the save button, fire a custom event named `save` from the
   type="Hint"
   title="Need Help?">
   Use the `this.$emit()` function and pass the `clonedHero` as the second argument. Your code may look like the following.
-  
+
 
 ```javascript
 methods: {
@@ -1066,7 +1066,7 @@ In the template of your `Heroes` component, bind the `HeroDetail`'s `cancel` eve
   type="Hint"
   title="Need Help?">
   Your code may look like the following.
-  
+
 
 ```html
 <HeroDetail :hero="selectedHero" @cancel="unselectHero" v-if="selectedHero"/>
@@ -1099,7 +1099,7 @@ In the template of your `Heroes` component, bind the `HeroDetail`'s `save` event
   type="Hint"
   title="Need Help?">
   Your code may look like the following.
-  
+
 
 ```html
 <HeroDetail
@@ -1179,7 +1179,7 @@ const captains = console;
   type="Note"
   title="">
   Later in the lab you'll start a `Node.js` server on port `3000` that will provide the RESTful service that the Vue.js application calls. If you'd like to see the server code you can open `server/server.js`in the project.
-  
+
 </course-item>
 
 #### Step 8
@@ -1337,7 +1337,7 @@ The code is storing a local copy of the heroes so how do you know if the server 
   type="Note"
   title="">
   Alternatively you can use the **Networking** tools available in the **Chrome Dev Tools** to see the data being sent to and from the server (ensure that the XHR filter is selected).
-  
+
 </course-item>
 
 #### Step 14
@@ -1369,7 +1369,7 @@ When you are prompted to use history mode, type `y` and press `ENTER`.
 
 #### Step 3
 
-Notice that the Vue CLi tells you that several files have been updated. The `router.js` file now contains all of your routing/navigation logic and tells Vue to use the router. The `App.vue` file now contains a place for the routes to show their views (the `<router-view>`).
+Notice that the Vue CLI tells you that several files have been updated. The `router.js` file now contains all of your routing/navigation logic and tells Vue to use the router. The `App.vue` file now contains a place for the routes to show their views (the `<router-view>`).
 
 
 ```command-line
@@ -1391,11 +1391,11 @@ We also have new files `Home.vue` and `About.vue`. Let's delete those because we
 We'll be using the following files instead:
 
 *   villains-list.vue
-    
+
 *   orders-list.vue
-    
+
 *   not-found.vue
-    
+
 
 They'll be displayed in the application using routing.
 
@@ -1512,7 +1512,7 @@ Open `villains-list.vue`. Locate the `Add router-link Here` comment and replace 
   type="Note"
   title="Defining a Route Parameter">
   Notice that you're using the `name` property to reference the name of the route created earlier and the `params` property to define the value of the `id` route parameter.
-  
+
 </course-item>
 
 #### Step 2
@@ -1539,7 +1539,7 @@ The computed property function should accept a single parameter named `vm` and r
   type="Note"
   title="Using $route">
   The $route object can be used to access route parameters (such as the `:id` parameter defined in the previous exercise) or even access query-string parameters.
-  
+
 </course-item>
 
 
@@ -1547,7 +1547,7 @@ The computed property function should accept a single parameter named `vm` and r
   type="Hint"
   title="Need Help?">
   The computed property function should look like the following:
-  
+
 
 ```javascript
 villainId: vm => vm.$route.params.id;
@@ -1601,7 +1601,7 @@ Open `package.json` and notice that a new dependency has been added for `vuex`.
 Let's now look at what the `vue add vuex` command did to the project. Open the `src` folder and notice that a `store.js` file has been added. It does the following:
 
 *   Tells Vue to use Vuex by calling `Vue.use(Vuex)`
-    
+
 *   Creates a new `Vuex.Store` object with `state`, `mutations`, and `actions` properties.
 
 
@@ -1609,7 +1609,7 @@ Let's now look at what the `vue add vuex` command did to the project. Open the `
   type="Note"
   title="">
   The `store.js` file is also imported into `main.js` and is passed to the `Vue` object created there.
-  
+
 </course-item>
 
 #### Step 6
@@ -1636,7 +1636,7 @@ products: []
   type="Note"
   title="">
   These two properties will be stored by Vuex in the store and be accessible throughout the entire application.
-  
+
 </course-item>
 
 #### Step 8
@@ -1700,7 +1700,7 @@ removeFromCartAction({ commit }, item) {
   type="Note"
   title="">
   Note that we suffix each action with the word "Action" to make sure there are no naming conflicts with mutations that may have the same name.
-  
+
 </course-item>
 
 
@@ -1708,7 +1708,7 @@ removeFromCartAction({ commit }, item) {
   type="Note"
   title="">
   Note that the action function calls can use destructuring to access `commit` and `state` objects. The `commit` object lets the action commit a mutation. The `state` object gives the action access to the state.
-  
+
 </course-item>
 
 
@@ -1716,7 +1716,7 @@ removeFromCartAction({ commit }, item) {
   type="Note"
   title="">
   Note that Axios or another library could be used to make the HTTP call as well as shown in the HTTP lab.
-  
+
 </course-item>
 
 #### Step 10
@@ -1741,7 +1741,7 @@ getters: {
   type="Note"
   title="">
   Note that Axios or another library could be used to Don't forget to add a comma after the last `actions` property bracket.
-  
+
 </course-item>
 
 #### Step 11
@@ -1764,7 +1764,7 @@ In this exercise you'll add functionality into components to handle storing and 
 Open `src/views/products.vue` in your editor and take a moment to note the following:
 
 *   Examine the HTML code in the template. Notice that it renders products as well as a `Cart` component.
-    
+
 *   Notice that Vuex functionality is imported in the `scripts` section. The `mapState` and `mapActions` functions will be used to access store state and call into the store's actions.
 
 #### Step 2
@@ -1781,7 +1781,7 @@ Add the following code into the `methods` property:
   type="Note"
   title="">
   The `mapActions` code makes the `getProductsAction` and `addToCartAction` actions in the Vuex store accessible to the component.
-  
+
 </course-item>
 
 #### Step 3
@@ -1798,7 +1798,7 @@ Add the following code into the component's `computed` property.
   type="Note"
   title="">
   This will allow the `products` property from the Vuex store's `state` to be used in the component. Take a moment to locate the `v-for` directive in the component's template to see where the `products` property is used.
-  
+
 </course-item>
 
 #### Step 4
@@ -1823,7 +1823,7 @@ Add the following code into the `methods` property of the component.
   type="Note"
   title="">
   This code allows the `removeFromCartAction()` function defined in the store's actions property to be used by the `Cart` component. The `removeFromCartAction()` function is called when a button in the template is clicked.
-  
+
 </course-item>
 
 #### Step 7
