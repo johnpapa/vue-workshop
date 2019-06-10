@@ -40,6 +40,8 @@
 </template>
 
 <script>
+import { updateHero } from "@/heroes";
+
 export default {
   name: "HeroDetail",
   props: {
@@ -69,8 +71,11 @@ export default {
       this.hero = await this.getHero();
       this.message = "";
     },
-    saveHero() {
-      this.$emit("save", this.clonedHero);
+    async saveHero() {
+      const status = await updateHero(this.clonedHero);
+      if (status) {
+        this.$emit("save", this.clonedHero);
+      }
     }
   }
 };

@@ -16,5 +16,17 @@
       "firstName": "Haley",
       "lastName": "Papa",
       "description": "pen wielder"
+    },
+    {
+      "id": 40,
+      "firstName": "Danny",
+      "lastName": "Wahlin",
+      "description": "surgeon extraordinaire"
+    },
+    {
+      "id": 50,
+      "firstName": "Jeff",
+      "lastName": "Wahlin",
+      "description": "gaming strategy master"
     }
 ]

@@ -37,7 +37,7 @@
 
 <script>
 import HeroDetail from "@/components/hero-detail";
-import getHeroes from "@/heroes";
+import { getHeroes } from "@/heroes";
 
 export default {
   name: "Heroes",
